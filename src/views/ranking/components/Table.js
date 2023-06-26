@@ -25,7 +25,7 @@ export const TableRow = ({
   children,
 }) => {
   return (
-    <div className="flex justify-between items-center h-[64px] table__row">
+    <div className="flex justify-between items-center h-[64px] table__row cursor-pointer">
       { children }
     </div>
   )

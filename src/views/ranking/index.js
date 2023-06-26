@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MenuWhite from '../../components/pc/MenuWhite';
 import RedditTitle from './components/RedditTitle';
 import TopPriceColl from './components/TopPriceColl';
@@ -10,6 +10,7 @@ import TopPopullar from './components/TopPopullar';
 import H5Footer from "../../components/h5/H5Footer";
 
 const Ranking = () => {
+
   return (
     <div  className=" min-h-screen">
       <div className="w-full bg-white fixed z-50 left-0 right-0 top-0 ">
