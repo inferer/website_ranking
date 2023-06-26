@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import RankWrap from '../../ranking/components/RankWrap';
 import LazyImage from '../../../components/LazyImage';
 import LineChartS from './LineChart';
-import { TTitle } from './VolumeData'
+import { TTitle } from './VolumeData';
+import { formatName, formatNumber } from '@/utils';
 
 
-const PriceData = () => {
+const PriceData = ({
+  topPriceCollItem
+}) => {
+  const priceChartData = topPriceCollItem.priceChartData
+
   return (
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>
       <LazyImage src='/ranking/circle5.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
@@ -13,9 +18,10 @@ const PriceData = () => {
       <TTitle text="Price" tips="NFT transaction price in last 6 months" />
       <div className='text-[#3F4664] flex items-baseline mt-4'>
         <span className='font-fbold text-[32px]'>
-          3.599 
+          {/* {formatNumber(Number(priceChartData.total / priceChartData.xdata.length))} */}
+          {(priceChartData.total / priceChartData.xdata?.length).toFixed(3)}
         </span>
-        <span className=' font-fbold text-[20px] ml-1'>ETH</span>
+        <span className=' font-fbold text-[20px] ml-1'>$</span>
         <span className='text-[20px] text-[#7F8792] ml-[9px]'>(Avg)</span>
       </div>
       <div className='mt-4'>
@@ -23,18 +29,11 @@ const PriceData = () => {
           id={"pricedata"}
           lineData={{
             xAxis: {
-              data: ['Jan', 'Fab', 'Mar', 'Apr', 'May', 'Jun']
+              data: priceChartData.xdata
             },
             series: [
               {
-                data: [
-                  {name: '2', value: 138},
-                  {name: '3', value: 238},
-                  {name: '3', value: 178},
-                  {name: '3', value: 118},
-                  {name: '3', value: 298},
-                  {name: '4', value: 58},
-                ],
+                data: priceChartData.volumeData,
                 type: 'line',
                 color: '#FF532E',
                 smooth: true,

@@ -11,6 +11,8 @@ export interface ItopPriceCollItem {
   "infererAnalysis": {[key: string]: string},
   "volumeChartData": {[key: string]: string},
   "priceChartData": {[key: string]: string},
+  "holderPrecent": {[key: string]: string},
+  "infererLabels": {[key: string]: string}[]
 }
 
 export interface ITopPopularCollItem {

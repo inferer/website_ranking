@@ -4,13 +4,27 @@ import LazyImage from '../../../components/LazyImage';
 import { TTitle } from './VolumeData'
 import PieChartT from './PieChart'
 
-const HolderDist = () => {
+const HolderDist = ({
+  topPriceCollItem
+}) => {
   const [precentData, setPrecentData] = useState({
     '1': '0.0',
     '2-3': '0.0',
     '4-10': '0.0',
     '>10': '0.0'
   })
+
+  useEffect(() => {
+    const itemData = topPriceCollItem.holderPrecent
+    if (itemData && itemData.length > 0) {
+      let precentObj = {}
+      itemData.forEach((item) => {
+        precentObj[item.holder_type] = (item.precent * 100).toFixed(1)
+      });
+      setPrecentData({ ...precentData, ...precentObj })
+    }
+
+  }, [topPriceCollItem])
 
   return (
     <RankWrap className='sm:min-h-[360px]'>

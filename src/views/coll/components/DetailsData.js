@@ -1,5 +1,6 @@
 import LazyImage from "../../../components/LazyImage";
 import { Like, UnLike, StarList, CollectIcon, ShareIcon, BuyIcon, MsgIcon } from './coms';
+import { formatName, formatNumber } from '@/utils';
 
 
 const TextMain = ({ children }) => {
@@ -15,15 +16,18 @@ const TextSub = ({ children }) => {
   )
 }
 
-const DetailsData = () => {
+const DetailsData = ({
+  topPriceCollItem
+}) => {
+  const item = topPriceCollItem
   return (
     <div className="top__bg w-[1196px] h-[503px] rounded-[6px] mt-[138px] flex justify-between relative">
       <div className=" absolute w-[80px] h-[110px] border-[4px] border-white rounded-[6px] left-[40px] -top-[60px] overflow-hidden">
-        <LazyImage src="/addressan/images/demo.png" className="w-full h-full" />
+        <LazyImage src={topPriceCollItem.series_img_url || "/addressan/images/demo.png"} className="w-full h-full" />
       </div>
       <div className="pl-10 w-[570px]">
         <div className="flex items-center mt-[79px]">
-          <div className="text-[32px] font-fbold text-[#3F4664] leading-[42px]">Meme Team (100)</div>
+          <div className="text-[32px] font-fbold text-[#3F4664] leading-[42px]">{formatName(item.series_name)}</div>
           <LazyImage src="/addressan/reddit_logo.png" className="w-[36px] h-[36px] ml-3" />
         </div>
         
@@ -33,7 +37,7 @@ const DetailsData = () => {
             <TextMain>Contract</TextMain>
           </div>
           <div className="mt-2 flex items-center">
-            <TextSub>0x231d3559aa848bf10366fb9868590f01d34bf240</TextSub>
+            <TextSub>{item.token_address}</TextSub>
             <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
           </div>
         </div>
@@ -43,7 +47,7 @@ const DetailsData = () => {
             <TextMain>Artist</TextMain>
           </div>
           <div className="mt-2 flex items-center">
-            <TextSub>Canetoonist</TextSub>
+            <TextSub>{item.series_creator}</TextSub>
           </div>
         </div>
         <div className="mt-[24px]">
@@ -52,7 +56,7 @@ const DetailsData = () => {
             <TextMain>Description</TextMain>
           </div>
           <div className="mt-2 flex items-center">
-            <TextSub>The heroes from old comics may be amazing and incredible, but the galactic-scaled villains had truly magnetic personalities. In this issue, witness the nefarious might of The Downvoter! </TextSub>
+            <TextSub>{item.series_name}</TextSub>
           </div>
         </div>
       </div>
@@ -66,8 +70,8 @@ const DetailsData = () => {
         </div>
         <div className="flex justify-end mt-[58px]">
           <div className="flex items-baseline">
-            <div className="menu-text text-[102px] font-fbold leading-[110%]">0.99</div>
-            <div className="menu-text text-[56px] font-fbold ml-3">ETH</div>
+            <div className="menu-text text-[102px] font-fbold leading-[110%]">{Number(item.price).toFixed(2)}</div>
+            <div className="menu-text text-[56px] font-fbold ml-3">$</div>
           </div>
         </div>
         <div className="flex justify-end mt-[15px]">

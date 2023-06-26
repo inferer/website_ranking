@@ -23,9 +23,15 @@ export const TableHeadCell = ({
 
 export const TableRow = ({
   children,
+  onClick
 }) => {
   return (
-    <div className="flex justify-between items-center h-[64px] table__row cursor-pointer">
+    <div className="flex justify-between items-center h-[64px] table__row cursor-pointer"
+      onClick={e => {
+        e.stopPropagation()
+        onClick && onClick()
+      }}
+    >
       { children }
     </div>
   )

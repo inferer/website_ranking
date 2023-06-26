@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import RankWrap from '../../ranking/components/RankWrap';
 import LazyImage from '../../../components/LazyImage';
 import LineChartS from './LineChart';
+import { formatName, formatNumber } from '@/utils';
 
 export const TTitle = ({
   text,
@@ -19,7 +20,7 @@ export const TTitle = ({
           />
         }
         {
-          active && <div className='tips-wrap'>
+          active && <div className='tips-wrap font-fnormal'>
             {tips}
           </div>
         }
@@ -28,7 +29,12 @@ export const TTitle = ({
     )
   }
 
-const VolumeData = () => {
+const VolumeData = ({
+  topPriceCollItem
+}) => {
+
+  const volumeChartData = topPriceCollItem.volumeChartData
+
   return (
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>
       <LazyImage src='/ranking/circle6.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
@@ -36,9 +42,10 @@ const VolumeData = () => {
       <TTitle text="Volume" tips="NFT transaction volume in last 6 months" />
       <div className='text-[#3F4664] flex items-baseline mt-4'>
         <span className='font-fbold text-[32px]'>
-          3.599 
+          {/* {formatNumber(volumeChartData.total)} */}
+          {volumeChartData.total}
         </span>
-        <span className=' font-fbold text-[20px] ml-1'>ETH</span>
+        <span className=' font-fbold text-[20px] ml-1'>$</span>
         <span className='text-[20px] text-[#7F8792] ml-[9px]'>(Total)</span>
       </div>
       <div className='mt-4'>
@@ -46,18 +53,11 @@ const VolumeData = () => {
           id={"volumedata"}
           lineData={{
             xAxis: {
-              data: ['Jan', 'Fab', 'Mar', 'Apr', 'May', 'Jun']
+              data: volumeChartData.xdata
             },
             series: [
               {
-                data: [
-                  {name: '2', value: 138},
-                  {name: '3', value: 238},
-                  {name: '3', value: 178},
-                  {name: '3', value: 118},
-                  {name: '3', value: 298},
-                  {name: '4', value: 58},
-                ],
+                data: volumeChartData.volumeData,
                 type: 'line',
                 color: '#679AFF',
                 smooth: true,

@@ -3,15 +3,16 @@ import RankWrap from '../../ranking/components/RankWrap';
 import LazyImage from '../../../components/LazyImage';
 import { TTitle } from './VolumeData'
 
-const InferLabels = () => {
-  const [infererLabels] = useState([
-    {label_name: 'Defi Staker'},
-    {label_name: 'Defi Staker'},
-    {label_name: 'ENS User'},
-    {label_name: 'Top NFT Holders'},
-    {label_name: 'Defi Staker'},
-    {label_name: 'Opensea Trader'},
+const InferLabels = ({
+  topPriceCollItem
+}) => {
+  const [infererLabels, setInfererLabels] = useState([
+    
   ])
+
+  useEffect(() => {
+    setInfererLabels(topPriceCollItem.infererLabels ? topPriceCollItem.infererLabels.slice(0, 6) : [])
+  }, [topPriceCollItem])
 
   return (
     <RankWrap className='sm:min-h-[360px]'>
