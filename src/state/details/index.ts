@@ -3,6 +3,7 @@ import { create } from 'zustand'
 import { RankingDetailsState } from './types'
 import { ITopPopularCollItem, ITopPopullarItem, ITopPriceItem, ItopPriceCollItem } from '../ranking/types'
 import { num2Month } from '@/utils'
+import { levelInfo } from '../ranking'
 
 const useDetailsStore = create<RankingDetailsState>()((set) => ({
   topPriceCollItem: {
@@ -153,7 +154,14 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
     NFT_series_name: '',
     NFT_series_img_url: '',
     priceMonthHistory: [],
-    priceChartData: {}
+    priceChartData: {},
+    ownerInfo: {},
+    analysisData: {},
+    birth_on: '',
+    active_since: '',
+    tx_count: '',
+    balance: '',
+    infer_score: ''
   },
   
   updateTopPriceItem: async (data: ITopPriceItem) => {
@@ -185,6 +193,34 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
             total: Number(total2).toFixed(3)
           }
       } })
+      // 再异步获取inferer评分信息
+      if (item.ownerInfo && item.ownerInfo.holder_address) {
+        const res2 = await fetcher('/api/infer', { address: item.ownerInfo.holder_address })
+        if (res2.status === 200) {
+          const analysisData = res2.result || {}
+          let newItem: any = {}
+          if (analysisData.info) {
+            const firstTx = analysisData.info['User First Tx Timestamp'] || ''
+            newItem.birth_on = firstTx.split(',')[0]
+            const lastTx = analysisData.info['User Latest Tx Timestamp'] || ''
+            newItem.active_since = lastTx.split(',')[0]
+            newItem.tx_count = analysisData.info['User Total Tx Count'] || ''
+            newItem.balance = parseFloat(analysisData.info['Account Balance'] || '').toFixed(5)
+            newItem.infer_score = levelInfo[analysisData.level?.toLowerCase()]
+          }
+          // res2.result
+          set({ topPriceItem: {
+            ...item,
+            ...newItem,
+            priceChartData: {
+              xdata: xdata2,
+              volumeData: volumeData2,
+              total: Number(total2).toFixed(3)
+            },
+            analysisData: res2.result || {}
+          } })
+        }
+      }
     }
   },
   topPopullarItem: {
@@ -198,7 +234,14 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
     NFT_series_name: '',
     NFT_series_img_url: '',
     priceMonthHistory: [],
-    priceChartData: {}
+    priceChartData: {},
+    ownerInfo: {},
+    analysisData: {},
+    birth_on: '--',
+    active_since: '--',
+    tx_count: '--',
+    balance: '--',
+    infer_score: '--'
   },
   updateTopPopullarItem: async (data: ITopPopullarItem) => {
     set({ topPopullarItem: data })
@@ -229,6 +272,34 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
             total: Number(total2).toFixed(3)
           }
       } })
+      // 再异步获取inferer评分信息
+      if (item.ownerInfo && item.ownerInfo.holder_address) {
+        const res2 = await fetcher('/api/infer', { address: item.ownerInfo.holder_address })
+        if (res2.status === 200) {
+          const analysisData = res2.result || {}
+          let newItem: any = {}
+          if (analysisData.info) {
+            const firstTx = analysisData.info['User First Tx Timestamp'] || ''
+            newItem.birth_on = firstTx.split(',')[0]
+            const lastTx = analysisData.info['User Latest Tx Timestamp'] || ''
+            newItem.active_since = lastTx.split(',')[0]
+            newItem.tx_count = analysisData.info['User Total Tx Count'] || ''
+            newItem.balance = parseFloat(analysisData.info['Account Balance'] || '').toFixed(5)
+            newItem.infer_score = levelInfo[analysisData.level?.toLowerCase()]
+          }
+          // res2.result
+          set({ topPopullarItem: {
+            ...item,
+            ...newItem,
+            priceChartData: {
+              xdata: xdata2,
+              volumeData: volumeData2,
+              total: Number(total2).toFixed(3)
+            },
+            analysisData: res2.result || {}
+          } })
+        }
+      }
     }
   },
   // /api/web/ranking/getTopPriceDetails

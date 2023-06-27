@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  experimental: {
+    scrollRestoration: true,
+  },
   async rewrites() {
     return [
       {
-        source: '/api/web/:path*',
-        destination: `http://49.234.51.249:8792/api/web/:path*`
+        source: '/api/:path*',
+        destination: `http://49.234.51.249:8792/api/:path*`
       },
     ]
   },

@@ -96,7 +96,7 @@ const HolderInfo = ({
             <div className=" font-fmedium text-[16px] text-[rgba(63,70,100,0.9)]">Inferer score</div>
          </div>
          <div className="num-text1 font-fbold text-[176px] leading-[229px] text-center">
-            3.2
+            {itemData.infer_score || '0'}
          </div>
          <div className="flex items-center">
             <LazyImage src="/addressan/label.png" className="w-[20px] h-[20px] mr-[10px]" />
@@ -126,21 +126,21 @@ const HolderInfo = ({
               <div className="flex h-[38px]">
                 <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF]">
                   <div className="">Balance</div>
-                  <div className="text-[20px] font-fbold text-[#3F4664]">123</div>
+                  <div className="text-[20px] font-fbold text-[#3F4664]">{itemData.balance || '--'} ETH</div>
                 </div>
                 <div className="w-[50%] flex justify-between px-6 items-center">
                   <div className="">Birth on</div>
-                  <div className="">5/18/2021</div>
+                  <div className="">{itemData.birth_on || '--'}</div>
                 </div>
               </div>
               <div className="flex h-[38px]">
                 <div className="w-[50%] flex justify-between px-6 items-center">
                   <div className="">Tx count</div>
-                  <div className="text-[20px] font-fbold text-[#3F4664]">8</div>
+                  <div className="text-[20px] font-fbold text-[#3F4664]">{itemData.tx_count || '--'}</div>
                 </div>
                 <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF]">
                   <div className="">Active since</div>
-                  <div className="">5/18/2021</div>
+                  <div className="">{itemData.active_since || '--'}</div>
                 </div>
               </div>
             </div>

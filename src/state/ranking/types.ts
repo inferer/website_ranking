@@ -70,7 +70,14 @@ export interface ITopPriceItem {
   "NFT_series_name": string,
   "NFT_series_img_url": string,
   "priceMonthHistory": {[key: string]: string}[],
-  "priceChartData": {[key: string]: string}
+  "priceChartData": {[key: string]: string},
+  "ownerInfo": {[key: string]: string},
+  "analysisData": {[key: string]: string},
+  "birth_on": string,
+  "active_since": string,
+  "tx_count": string,
+  "balance": string,
+  "infer_score": string,
 }
 
 export interface ITopPopullarItem {
@@ -84,7 +91,14 @@ export interface ITopPopullarItem {
   "NFT_series_name": string,
   "NFT_series_img_url": string,
   "priceMonthHistory": {[key: string]: string}[],
-  "priceChartData": {[key: string]: string}
+  "priceChartData": {[key: string]: string},
+  "ownerInfo": {[key: string]: string},
+  "analysisData": {[key: string]: string},
+  "birth_on": string,
+  "active_since": string,
+  "tx_count": string,
+  "balance": string,
+  "infer_score": string,
 }
 
 

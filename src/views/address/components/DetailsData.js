@@ -22,7 +22,6 @@ const DetailsData = ({
 }) => {
 
   const router = useRouter()
-  console.log(router)
 
   return (
     <div className="top__bg w-[1196px] h-[499px] rounded-[6px] mt-[138px] flex justify-between relative">

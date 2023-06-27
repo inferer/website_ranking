@@ -8,7 +8,6 @@ import { TTitle } from '../../coll/components/VolumeData'
 const PriceData = ({
   itemData
 }) => {
-  console.log(itemData)
   return (
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>
       <LazyImage src='/ranking/circle5.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
