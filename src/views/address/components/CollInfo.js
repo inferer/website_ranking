@@ -15,23 +15,16 @@ const TextSub = ({ children }) => {
 }
 
 
-const CollInfo = () => {
-  const [infererLabels] = useState([
-    {label_name: 'Defi Staker'},
-    {label_name: 'Defi Staker'},
-    {label_name: 'ENS User'},
-    {label_name: 'Top NFT Holders'},
-    {label_name: 'Defi Staker'},
-    {label_name: 'Opensea Trader'},
-  ])
-
+const CollInfo = ({
+  itemData
+}) => {
   return (
     <div className="mt-[120px] coll_bg h-[484px] rounded-xl flex relative">
       <LazyImage src="/addressan/circle4.png" className="w-[62px] h-[62px] absolute left-[11px] -top-[31px]" />
       <div className="flex-1">
         <div className="flex mt-[82px] mb-5 justify-center">
           <div className="relative w-[132px] h-[174px] flex items-center justify-center">
-            <LazyImage src="/addressan/images/demo.png" className=" w-full h-full" />
+            <img src={itemData.NFT_series_img_url || "/addressan/images/demo.png"} className=" w-full h-full" />
             {/* <LazyImage src="/addressan/avatar_bg.png" className="w-[132px] h-[174px] absolute left-0 top-0" /> */}
           </div>
         </div>
@@ -46,7 +39,7 @@ const CollInfo = () => {
       </div>
       <div className="w-[755px] px-[64px] pr-[98px] pt-[30px] pb-[70px]">
         <div className="flex justify-center num-text1 font-fbold text-[32px] mt-3">
-          Meme Team (100)
+          {itemData.NFT_series_name}
         </div>
         <div className="mt-[32px]">
           <div className="flex items-center">
@@ -54,7 +47,7 @@ const CollInfo = () => {
             <div className=" font-fmedium text-[16px] text-[#3F4664E5]">Contract</div>
           </div>
           <div className="flex items-center pl-[30px] mt-[10px]">
-            <div className="text-[16px] text-[rgba(63,70,100,0.6)]">0x231d3559aa848bf10366fb9868590f01d34bf240</div>
+            <div className="text-[16px] text-[rgba(63,70,100,0.6)]">{itemData.token_address}</div>
             <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[6px]" />
 
           </div>
@@ -65,7 +58,7 @@ const CollInfo = () => {
             <div className=" font-fmedium text-[16px] text-[#3F4664E5]">Artist</div>
           </div>
           <div className="flex items-center pl-[30px] mt-[10px]">
-            <div className="text-[16px] text-[rgba(63,70,100,0.6)]">Canetoonist</div>
+            <div className="text-[16px] text-[rgba(63,70,100,0.6)]">{itemData.NFT_creator}</div>
             <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[6px]" />
           </div>
         </div>

@@ -4,7 +4,7 @@ import LazyImage from '../../../components/LazyImage';
 import { TTitle } from './VolumeData'
 
 const InferAn = ({
-  topPriceCollItem
+  itemData
 }) => {
   const [per5, setPer5] = useState(0)
   const [per4, setPer4] = useState(0)
@@ -14,7 +14,7 @@ const InferAn = ({
 
 
   useEffect(() => {
-    const infererAnalysis = topPriceCollItem.infererAnalysis
+    const infererAnalysis = itemData.infererAnalysis
     const holderCount = infererAnalysis?.holder_address_count || 1;
     const scoreCount = infererAnalysis?.score5_count + infererAnalysis?.score4_count + infererAnalysis?.score3_count + infererAnalysis?.score2_count + infererAnalysis?.score1_count
     setPer5(infererAnalysis?.score5_count / scoreCount * 100)
@@ -22,7 +22,7 @@ const InferAn = ({
     setPer3(infererAnalysis?.score3_count / scoreCount * 100)
     setPer2(infererAnalysis?.score2_count / scoreCount * 100)
     setPer1(infererAnalysis?.score1_count / scoreCount * 100)
-  }, [topPriceCollItem.infererAnalysis])
+  }, [itemData.infererAnalysis])
 
   return (
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>
@@ -79,7 +79,7 @@ const InferAn = ({
         </div>
         <div className='line_score ml-[74px] mr-[30px]'></div>
         <div className="flex flex-1 items-center justify-center">
-          <div className="menu-text font-fbold text-[176px] leading-[229px] relative -top-[43px]">{Number(topPriceCollItem.infererAnalysis.score_avg).toFixed(1)}</div>
+          <div className="menu-text font-fbold text-[176px] leading-[229px] relative -top-[43px]">{Number(itemData.infererAnalysis.score_avg).toFixed(1)}</div>
         </div>
       </div>
       

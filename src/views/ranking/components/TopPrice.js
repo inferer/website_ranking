@@ -3,13 +3,16 @@ import RankTitle from './RankTitle';
 import { Table, TableHead, TableBody, TableHeadCell, TableRow, TableCell } from './Table';
 import LazyImage from '../../../components/LazyImage';
 import { LineChartS } from './LineChart';
-import { useRankingStore } from '@/state'
+import { useRankingStore, useDetailsStore } from '@/state'
 import { useEffect } from 'react';
 import { formatName, formatNumber, formatAddress } from '@/utils';
+import { useRouter } from 'next/router';
 
 const TopPrice = () => {
+  const router = useRouter()
   const getTopPrice = useRankingStore(state => state.getTopPrice)
   const topPriceItemList = useRankingStore(state => state.topPriceItemList)
+  const updateTopPriceItem = useDetailsStore(state => state.updateTopPriceItem)
 
   useEffect(() => {
     getTopPrice()
@@ -28,7 +31,12 @@ const TopPrice = () => {
         <TableBody>
           {
             topPriceItemList.map((item, key) => {
-              return <TableRow key={key}>
+              return <TableRow key={key}
+                        onClick={() => {
+                          updateTopPriceItem(item)
+                          router.push({pathname: `/top-price/${item.token_address}/${item.token_id}`})
+                        }}
+                      >
                       <TableCell className="flex-1">
                         <div className=' font-dbold text-base italic w-9'>{key + 1}</div>
                         <div className='w-[30px] h-[40px] mr-2 flex items-center justify-center relative img-wrap '>

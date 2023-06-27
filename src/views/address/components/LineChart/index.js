@@ -20,14 +20,14 @@ const LineChartT = ({
   useEffect(() => {
     option = {
       grid: {
-        left: -80,
+        left: -50,
         top: 10,
         bottom: 30,
-        right: -80
+        right: -50
       },
       xAxis: {
         type: 'category',
-        data: ['Jan', 'Fab', 'Mar', 'Apr', 'May', 'Jun'],
+        data: [],
         axisLine: {
           show: false
         },

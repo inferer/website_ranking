@@ -4,15 +4,15 @@ import LazyImage from '../../../components/LazyImage';
 import { TTitle } from './VolumeData'
 
 const InferLabels = ({
-  topPriceCollItem
+  itemData
 }) => {
   const [infererLabels, setInfererLabels] = useState([
     
   ])
 
   useEffect(() => {
-    setInfererLabels(topPriceCollItem.infererLabels ? topPriceCollItem.infererLabels.slice(0, 6) : [])
-  }, [topPriceCollItem])
+    setInfererLabels(itemData.infererLabels ? itemData.infererLabels.slice(0, 6) : [])
+  }, [itemData])
 
   return (
     <RankWrap className='sm:min-h-[360px]'>

@@ -5,7 +5,10 @@ import LineChartS from './LineChart';
 import { TTitle } from '../../coll/components/VolumeData'
 
 
-const PriceData = () => {
+const PriceData = ({
+  itemData
+}) => {
+  console.log(itemData)
   return (
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>
       <LazyImage src='/ranking/circle5.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
@@ -13,9 +16,9 @@ const PriceData = () => {
       <TTitle text="Price" tips="NFT transaction price in last 6 months" />
       <div className='text-[#3F4664] flex items-baseline mt-4'>
         <span className='font-fbold text-[32px]'>
-          3.599 
+          {itemData.priceChartData?.total}
         </span>
-        <span className=' font-fbold text-[20px] ml-1'>ETH</span>
+        <span className=' font-fbold text-[20px] ml-1'>$</span>
         <span className='text-[20px] text-[#7F8792] ml-[9px]'>(Avg)</span>
       </div>
       <div className='mt-4'>
@@ -23,18 +26,11 @@ const PriceData = () => {
           id={"pricedata"}
           lineData={{
             xAxis: {
-              data: ['Jan', 'Fab', 'Mar', 'Apr', 'May', 'Jun']
+              data: itemData.priceChartData?.xdata
             },
             series: [
               {
-                data: [
-                  {name: '2', value: 138},
-                  {name: '3', value: 238},
-                  {name: '3', value: 178},
-                  {name: '3', value: 118},
-                  {name: '3', value: 298},
-                  {name: '4', value: 58},
-                ],
+                data: itemData.priceChartData?.volumeData,
                 type: 'line',
                 color: '#FF532E',
                 smooth: true,

@@ -3,13 +3,16 @@ import RankTitle from './RankTitle';
 import { Table, TableHead, TableBody, TableHeadCell, TableRow, TableCell } from './Table';
 import LazyImage from '../../../components/LazyImage';
 import { LineChartS } from './LineChart';
-import { useRankingStore } from '@/state'
+import { useRankingStore, useDetailsStore } from '@/state'
 import { useEffect } from 'react';
 import { formatName, formatNumber } from '@/utils';
+import { useRouter } from 'next/router';
 
 const TopPopullarColl = () => {
+  const router = useRouter()
   const getTopPopularColl = useRankingStore(state => state.getTopPopularColl)
   const topPopularCollList = useRankingStore(state => state.topPopularCollList)
+  const updateTopPopullarCollItem = useDetailsStore(state => state.updateTopPopullarCollItem)
 
   useEffect(() => {
     getTopPopularColl()
@@ -31,7 +34,12 @@ const TopPopullarColl = () => {
         <TableBody>
           {
             topPopularCollList.map((item, key) => {
-              return <TableRow key={key}>
+              return <TableRow key={key}
+                        onClick={() => {
+                          updateTopPopullarCollItem(item)
+                          router.push({ pathname: `/top-popullar-collection/${item.token_address}`})
+                        }}
+                      >
                       <TableCell className="flex-1">
                         <div className=' font-dbold text-base italic w-9'>{key + 1}</div>
                         <LazyImage src={item.series_img_url || "/ranking/demo.png"} className="w-[30px] h-[40px] mr-2 shrink-0" />

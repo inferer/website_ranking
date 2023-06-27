@@ -30,10 +30,10 @@ export const TTitle = ({
   }
 
 const VolumeData = ({
-  topPriceCollItem
+  itemData
 }) => {
 
-  const volumeChartData = topPriceCollItem.volumeChartData
+  const volumeChartData = itemData.volumeChartData
 
   return (
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>

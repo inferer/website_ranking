@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import MenuWhite from '../../components/pc/MenuWhite';
 
 import H5Footer from "../../components/h5/H5Footer";
@@ -17,14 +17,30 @@ const AddressAn = () => {
   const router = useRouter()
 
   const topPriceCollItem = useDetailsStore(state => state.topPriceCollItem)
+  const topPopullarCollItem = useDetailsStore(state => state.topPopullarCollItem)
   const getTopPriceCollItem = useDetailsStore(state => state.getTopPriceCollItem)
+  const getTopPopullarCollItem = useDetailsStore(state => state.getTopPopullarCollItem)
 
   useEffect(() => {
     if (router.pathname === '/top-price-collection/[...address]') {
       const address = router.query.address && router.query.address[0] || ''
       getTopPriceCollItem(address)
     }
+    if (router.pathname === '/top-popullar-collection/[...address]') {
+      const address = router.query.address && router.query.address[0] || ''
+      getTopPopullarCollItem(address)
+    }
   }, [router])
+
+  const itemData = useMemo(() => {
+    if (router.pathname === '/top-price-collection/[...address]') {
+      return topPriceCollItem
+    }
+    if (router.pathname === '/top-popullar-collection/[...address]') {
+      return topPopullarCollItem
+    }
+    return topPriceCollItem
+  }, [router, topPriceCollItem, topPopullarCollItem])
 
   return (
     <div  className=" min-h-screen pt-[26px] ranking__wrap">
@@ -36,24 +52,24 @@ const AddressAn = () => {
       <div className=" pt-[74px] addressan-bg min-h-screen ">
         <div className="w-[1200px] mx-auto pb-[145px]">
           <DetailsData 
-            topPriceCollItem={topPriceCollItem}
+            itemData={itemData}
           />
           <VolumeData 
-            topPriceCollItem={topPriceCollItem}
+            itemData={itemData}
           />
           <PriceData 
-            topPriceCollItem={topPriceCollItem}
+            itemData={itemData}
           />
           <InferAn 
-            topPriceCollItem={topPriceCollItem}
+            itemData={itemData}
           />
 
           <div className="mt-[120px] flex space-x-6">
             <HolderDist 
-              topPriceCollItem={topPriceCollItem}
+              itemData={itemData}
             />
             <InferLabels 
-              topPriceCollItem={topPriceCollItem}
+              itemData={itemData}
             />
           </div>
 

@@ -1,6 +1,7 @@
 import LazyImage from "../../../components/LazyImage";
 import { Like, UnLike, StarList, CollectIcon, ShareIcon, BuyIcon, MsgIcon } from './coms';
 import { formatName, formatNumber } from '@/utils';
+import { useRouter } from "next/router";
 
 
 const TextMain = ({ children }) => {
@@ -17,13 +18,15 @@ const TextSub = ({ children }) => {
 }
 
 const DetailsData = ({
-  topPriceCollItem
+  itemData
 }) => {
-  const item = topPriceCollItem
+  const router = useRouter()
+  const item = itemData
+
   return (
     <div className="top__bg w-[1196px] h-[503px] rounded-[6px] mt-[138px] flex justify-between relative">
       <div className=" absolute w-[80px] h-[110px] border-[4px] border-white rounded-[6px] left-[40px] -top-[60px] overflow-hidden">
-        <LazyImage src={topPriceCollItem.series_img_url || "/addressan/images/demo.png"} className="w-full h-full" />
+        <LazyImage src={itemData.series_img_url || "/addressan/images/demo.png"} className="w-full h-full" />
       </div>
       <div className="pl-10 w-[570px]">
         <div className="flex items-center mt-[79px]">
@@ -69,10 +72,21 @@ const DetailsData = ({
           </div>
         </div>
         <div className="flex justify-end mt-[58px]">
-          <div className="flex items-baseline">
-            <div className="menu-text text-[102px] font-fbold leading-[110%]">{Number(item.price).toFixed(2)}</div>
-            <div className="menu-text text-[56px] font-fbold ml-3">$</div>
-          </div>
+          {
+            router.pathname === '/top-price-collection/[...address]' && 
+            <div className="flex items-baseline">
+              <div className="num-text1 text-[102px] font-fbold leading-[110%]">{Number(item.price).toFixed(2)}</div>
+              <div className="num-text1 text-[56px] font-fbold ml-3">$</div>
+            </div>
+          }
+          {
+            router.pathname === '/top-popullar-collection/[...address]' && 
+            <div className="flex items-baseline">
+              <div className="num-text1 text-[102px] font-fbold leading-[110%]">{item.transaction_num}</div>
+              <div className="num-text1 text-[56px] font-fbold ml-3">txs</div>
+            </div>
+          }
+          
         </div>
         <div className="flex justify-end mt-[15px]">
           <div className="flex items-center">

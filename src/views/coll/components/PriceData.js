@@ -7,9 +7,9 @@ import { formatName, formatNumber } from '@/utils';
 
 
 const PriceData = ({
-  topPriceCollItem
+  itemData
 }) => {
-  const priceChartData = topPriceCollItem.priceChartData
+  const priceChartData = itemData.priceChartData
 
   return (
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>

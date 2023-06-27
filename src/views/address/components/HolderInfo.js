@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import LazyImage from "../../../components/LazyImage";
 
 const TextMain = ({ children }) => {
@@ -15,15 +15,15 @@ const TextSub = ({ children }) => {
 }
 
 
-const HolderInfo = () => {
-  const [infererLabels] = useState([
-    {label_name: 'Defi Staker'},
-    {label_name: 'Defi Staker'},
-    {label_name: 'ENS User'},
-    {label_name: 'Top NFT Holders'},
-    {label_name: 'Defi Staker'},
-    {label_name: 'Opensea Trader'},
-  ])
+const HolderInfo = ({
+  itemData
+}) => {
+  const ownerInfo = useMemo(() => {
+    return itemData.ownerInfo || {}
+  }, [itemData])
+  const infererLabels = useMemo(() => {
+    return itemData.infererLabels || []
+  }, [itemData])
 
   return (
     <div className="mt-[120px] holder_bg h-[640px] rounded-xl flex relative">
@@ -31,7 +31,7 @@ const HolderInfo = () => {
       <div className="flex-1">
         <div className="flex mt-[42px] mb-5 justify-center">
           <div className="relative w-[132px] h-[174px] flex items-center justify-center">
-            <LazyImage src="/addressan/nft-asset.png" className=" max-w-full max-h-full w-auto h-auto" />
+            <LazyImage src={ownerInfo?.img_url || "/addressan/nft-asset.png"} className=" max-w-full max-h-full w-auto h-auto" />
             <LazyImage src="/addressan/avatar_bg.png" className="w-[132px] h-[174px] absolute left-0 top-0" />
           </div>
         </div>
@@ -50,8 +50,14 @@ const HolderInfo = () => {
             <TextMain>Reddit</TextMain>
           </div>
           <div className="mt-2 flex items-center">
-            <TextSub>BridgetheDivide</TextSub>
-            <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+            {
+              ownerInfo?.user_name ?
+              <>
+                <TextSub>BridgetheDivide</TextSub>
+                <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+              </> : <TextSub>none</TextSub>
+            }
+            
           </div>
         </div>
         <div className="mt-[22px]">
@@ -60,7 +66,7 @@ const HolderInfo = () => {
             <TextMain>Reddit</TextMain>
           </div>
           <div className="mt-2 flex items-center">
-            <TextSub>Hold 239 Reddit NFTs</TextSub>
+            <TextSub>Hold {ownerInfo?.nft_nums || 0} Reddit NFTs</TextSub>
           </div>
         </div>
         <div className="mt-[22px]">
@@ -69,8 +75,16 @@ const HolderInfo = () => {
             <TextMain>Address</TextMain>
           </div>
           <div className="mt-2 flex items-center">
-            <TextSub>0x231d3559aa848bf10366fb9868590f01d34bf240</TextSub>
-            <LazyImage src="/addressan/images/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+            <TextSub>{ownerInfo?.holder_address}</TextSub>
+            <LazyImage src="/addressan/images/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" 
+              onClick={(e) => {
+                e.stopPropagation()
+                navigator.clipboard.writeText(ownerInfo?.holder_address)
+                  .then(() => {
+                    // Toast.show({ content: 'Copied', position: 'bottom' })
+                  })
+              }}
+            />
           </div>
         </div>
         </div>
@@ -89,10 +103,10 @@ const HolderInfo = () => {
             <div className=" font-fmedium text-[16px] text-[rgba(63,70,100,0.9)]">Inferer labels</div>
          </div>
          <div className="mt-[10px] pl-[30px]">
-            <div className="bg-[#F8F9FF] rounded h-[116px] pl-5 pt-4">
+            <div className="bg-[#F8F9FF] rounded min-h-[116px] pl-5 pt-4">
               <div className="flex flex-wrap">
                 {
-                  infererLabels.map((label, key) => {
+                  infererLabels.slice(0, 6).map((label, key) => {
                     return (
                       <div key={label.label_name + key} className="infer-label2">
                         <div className="text-[20px] text-[#3F4664]">{label.label_name}</div>

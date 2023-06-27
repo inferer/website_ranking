@@ -5,7 +5,7 @@ import { TTitle } from './VolumeData'
 import PieChartT from './PieChart'
 
 const HolderDist = ({
-  topPriceCollItem
+  itemData
 }) => {
   const [precentData, setPrecentData] = useState({
     '1': '0.0',
@@ -15,16 +15,16 @@ const HolderDist = ({
   })
 
   useEffect(() => {
-    const itemData = topPriceCollItem.holderPrecent
-    if (itemData && itemData.length > 0) {
+    const holderPrecent = itemData.holderPrecent
+    if (holderPrecent && holderPrecent.length > 0) {
       let precentObj = {}
-      itemData.forEach((item) => {
+      holderPrecent.forEach((item) => {
         precentObj[item.holder_type] = (item.precent * 100).toFixed(1)
       });
       setPrecentData({ ...precentData, ...precentObj })
     }
 
-  }, [topPriceCollItem])
+  }, [itemData])
 
   return (
     <RankWrap className='sm:min-h-[360px]'>
