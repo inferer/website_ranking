@@ -10,6 +10,10 @@ const nextConfig = {
         source: '/api/:path*',
         destination: `http://49.234.51.249:8792/api/:path*`
       },
+      {
+        source: '/plugin/:path*',
+        destination: `http://49.234.51.249:8792/plugin/:path*`
+      },
     ]
   },
 }
