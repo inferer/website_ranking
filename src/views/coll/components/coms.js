@@ -75,7 +75,7 @@ export const UnLike = ({
   }
 
 export const StarList = ({
-  score
+  score = 1
 }) => {
 
     return (
