@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import LazyImage from "../../../components/LazyImage";
-
-const TextMain = ({ children }) => {
-  return (
-    <div className="text-[20px] font-fbold text-[#3F4664] leading-[26px]">{children}</div>
-  )
-}
-const TextSub = ({ children }) => {
-  return (
-    <div className="text-[rgba(63,70,100,0.6)] text-[16px] leading-6">
-      {children}
-    </div>
-  )
-}
-
+import { openBrowser } from '@/utils';
+import { redditUserUrl } from '@/config';
+import CopyClipboard from '@/components/CopyClipboard';
 
 const CollInfo = ({
   itemData
@@ -48,8 +37,9 @@ const CollInfo = ({
           </div>
           <div className="flex items-center pl-[30px] mt-[10px]">
             <div className="text-[16px] text-[rgba(63,70,100,0.6)]">{itemData.token_address}</div>
-            <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[6px]" />
-
+            <CopyClipboard text={itemData.token_address}>
+              <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[6px] cursor-pointer" />
+            </CopyClipboard>
           </div>
         </div>
         <div className="mt-[20px]">
@@ -59,7 +49,12 @@ const CollInfo = ({
           </div>
           <div className="flex items-center pl-[30px] mt-[10px]">
             <div className="text-[16px] text-[rgba(63,70,100,0.6)]">{itemData.NFT_creator}</div>
-            <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[6px]" />
+            <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[6px] cursor-pointer"
+              onClick={e => {
+                e.stopPropagation()
+                openBrowser(redditUserUrl + itemData?.NFT_creator || '')
+              }}
+            />
           </div>
         </div>
         <div className="mt-[20px]">

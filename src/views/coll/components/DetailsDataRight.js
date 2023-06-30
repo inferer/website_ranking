@@ -36,7 +36,6 @@ const DetailsDataRight = ({
   const { account } = useActiveWeb3React()
   const router = useRouter()
   const item = itemData
-  console.log(router)
   const [ onPrresent, onDimiss ] = useModal(<WalletModal />)
 
   const userId = useUserStore(state => state.userId)

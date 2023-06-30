@@ -1,5 +1,5 @@
 
 
 
-export const connectorLocalStorageKey = "connectorIdLenen";
+export const connectorLocalStorageKey = "connectorIdInferer";
 export const walletLocalStorageKey = "wallet";

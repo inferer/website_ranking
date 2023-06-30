@@ -1,5 +1,8 @@
 import React, { useMemo, useState } from "react";
 import LazyImage from "../../../components/LazyImage";
+import CopyClipboard from '@/components/CopyClipboard';
+import { openBrowser } from '@/utils';
+import { redditUserUrl } from '@/config';
 
 const TextMain = ({ children }) => {
   return (
@@ -53,8 +56,13 @@ const HolderInfo = ({
             {
               ownerInfo?.user_name ?
               <>
-                <TextSub>BridgetheDivide</TextSub>
-                <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+                <TextSub>{ownerInfo?.user_name}</TextSub>
+                <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" 
+                  onClick={e => {
+                    e.stopPropagation()
+                    openBrowser(redditUserUrl + ownerInfo?.user_name || '')
+                  }}
+                />
               </> : <TextSub>none</TextSub>
             }
             
@@ -76,15 +84,11 @@ const HolderInfo = ({
           </div>
           <div className="mt-2 flex items-center">
             <TextSub>{ownerInfo?.holder_address}</TextSub>
-            <LazyImage src="/addressan/images/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" 
-              onClick={(e) => {
-                e.stopPropagation()
-                navigator.clipboard.writeText(ownerInfo?.holder_address)
-                  .then(() => {
-                    // Toast.show({ content: 'Copied', position: 'bottom' })
-                  })
-              }}
-            />
+            <CopyClipboard text={ownerInfo?.holder_address}>
+              <LazyImage src="/addressan/images/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" 
+                
+              />
+            </CopyClipboard>
           </div>
         </div>
         </div>

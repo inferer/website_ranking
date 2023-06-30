@@ -1,6 +1,5 @@
 import useModal from "@/hooks/useModal";
 import LazyImage from "../../../components/LazyImage";
-import { Like, UnLike, StarList, CollectIcon, ShareIcon, BuyIcon, MsgIcon } from './coms';
 import { formatName, formatNumber, openBrowser } from '@/utils';
 import { useRouter } from "next/router";
 import WalletModal from "@/components/walletmodal/WalletModal";
@@ -8,7 +7,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import useActiveWeb3React from "@/hooks/useActiveWeb3React";
 import { message } from 'antd';
 import DetailsDataRight from './DetailsDataRight'
-import { redditShareUrl, redditBuyUrl, redditChatUrl } from '@/config'
+import CopyClipboard from '@/components/CopyClipboard';
+import { redditUserUrl } from '@/config';
 
 import { useUserStore } from "@/state";
 
@@ -170,7 +170,9 @@ const DetailsData = ({
           </div>
           <div className="mt-2 flex items-center">
             <TextSub>{item.token_address}</TextSub>
-            <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+            <CopyClipboard text={item.token_address}>
+              <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+            </CopyClipboard>
           </div>
         </div>
         <div className="mt-[24px]">
@@ -180,6 +182,12 @@ const DetailsData = ({
           </div>
           <div className="mt-2 flex items-center">
             <TextSub>{item.series_creator}</TextSub>
+            <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[6px] cursor-pointer"
+              onClick={e => {
+                e.stopPropagation()
+                openBrowser(redditUserUrl + item.series_creator || '')
+              }}
+            />
           </div>
         </div>
         <div className="mt-[24px]">

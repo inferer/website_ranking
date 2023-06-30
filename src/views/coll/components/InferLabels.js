@@ -23,7 +23,7 @@ const InferLabels = ({
           infererLabels.map((label, key) => {
             return (
               <div key={label.label_name + key} className="infer-label">
-                <div className="menu-text text-[26px]">{label.label_name}</div>
+                <div className="num-text1 text-[26px]">{label.label_name}</div>
               </div>
             )
           })
