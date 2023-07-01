@@ -31,30 +31,30 @@ const HolderDist = ({
       <LazyImage src='/ranking/circle7.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
       <TTitle text="Holding Amount distribution" />
       <div className="flex justify-between mt-6">
-        <div className="flex pl-4 flex-1 holding-amount justify-between pr-4">
+        <div className="flex pl-3 flex-1 holding-amount justify-between pr-3">
           <div className="pt-[36px]">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between cursor-pointer hover:bg-[#D7E4FD] rounded px-1">
               <div className="flex items-center">
                 <div className="holding-dot _1"></div>
                 1
               </div>
               <div className="ml-4 font-medium">{precentData['1']}%</div>
             </div>
-            <div className="flex items-center justify-between mt-5">
+            <div className="flex items-center justify-between mt-5 cursor-pointer hover:bg-[#D7E4FD] rounded px-1">
               <div className="flex items-center">
                 <div className="holding-dot _23"></div>
                 2-3
               </div>
               <div className="ml-4 font-medium">{precentData['2-3']}%</div>
             </div>
-            <div className="flex items-center justify-between mt-5">
+            <div className="flex items-center justify-between mt-5 cursor-pointer hover:bg-[#D7E4FD] rounded px-1">
               <div className="flex items-center">
                 <div className="holding-dot _410"></div>
                 4-10
               </div>
               <div className="ml-4 font-medium">{precentData['4-10']}%</div>
             </div>
-            <div className="flex items-center justify-between mt-5">
+            <div className="flex items-center justify-between mt-5 cursor-pointer hover:bg-[#D7E4FD] rounded px-1">
               <div className="flex items-center">
                 <div className="holding-dot _10"></div>
                 {">"}10

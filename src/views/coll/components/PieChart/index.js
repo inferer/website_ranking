@@ -45,7 +45,7 @@ const PieChartT = ({
             position: 'center'
           },
           emphasis: {
-            scaleSize: 1,
+            scaleSize: 1.5,
             label: {
               show: true,
               fontSize: 20,

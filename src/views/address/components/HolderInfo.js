@@ -113,7 +113,7 @@ const HolderInfo = ({
                   infererLabels.slice(0, 6).map((label, key) => {
                     return (
                       <div key={label.label_name + key} className="infer-label2">
-                        <div className="text-[20px] text-[#3F4664]">{label.label_name}</div>
+                        <div className="text-[20px] text-[#3F4664] text-label2">{label.label_name}</div>
                       </div>
                     )
                   })
@@ -128,21 +128,21 @@ const HolderInfo = ({
          <div className="mt-[10px] pl-[30px]">
             <div className="bg-[#F8F9FF] rounded h-[76px] text-[20px] font-fbold text-[#3F4664]">
               <div className="flex h-[38px]">
-                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF]">
+                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF] hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Balance</div>
                   <div className="text-[20px] font-fbold text-[#3F4664]">{itemData.balance || '--'} ETH</div>
                 </div>
-                <div className="w-[50%] flex justify-between px-6 items-center">
+                <div className="w-[50%] flex justify-between px-6 items-center hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Birth on</div>
                   <div className="">{itemData.birth_on || '--'}</div>
                 </div>
               </div>
               <div className="flex h-[38px]">
-                <div className="w-[50%] flex justify-between px-6 items-center">
+                <div className="w-[50%] flex justify-between px-6 items-center hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Tx count</div>
                   <div className="text-[20px] font-fbold text-[#3F4664]">{itemData.tx_count || '--'}</div>
                 </div>
-                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF]">
+                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF] hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Active since</div>
                   <div className="">{itemData.active_since || '--'}</div>
                 </div>
