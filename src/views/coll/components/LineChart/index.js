@@ -81,7 +81,7 @@ const LineChartT = ({
             if (left > chartRect?.width - rect?.width) {
               left = chartRect?.width - rect?.width
             }
-            setTipPos({ left: left, top: originEvent.zrY - rect?.height / 2, opacity: 1 })
+            setTipPos({ left: left, top: originEvent.zrY - 80, opacity: 1 })
           }
         })
       }
@@ -103,7 +103,10 @@ const LineChartT = ({
         }}
         className='chart-tip'
         style={{ left: tipPos.left, top: tipPos.top, opacity: tipPos.opacity }}>
-        {`${serieData.name}: ${serieData.value} ETH`}
+          <div className='chart-tip2'>
+            {`${serieData.name}: ${serieData.value} ETH`}
+          </div>
+        
       </div>
     </div>
   )

@@ -71,7 +71,7 @@ const TopProfitRatios = () => {
                       <TableCell className="w-[156px] ">{item.active_since}</TableCell>
                       <TableCell className="w-[133px] justify-center ">{item.tx_count}</TableCell>
                       <TableCell className="w-[133px] justify-center">
-                        <div className=' menu-text text-[20px]'>{item.infer_score}</div>
+                        <div className=' num-text1 text-[20px]'>{Number(item.infer_score).toFixed(1)}</div>
                       </TableCell>
                       <TableCell className="w-[133px] justify-end">
                         <div className='num-text4 text-[20px]'>+{(item.wealth_appreciation * 100).toFixed(0)}%</div>

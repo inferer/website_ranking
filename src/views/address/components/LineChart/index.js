@@ -63,7 +63,6 @@ const LineChartT = ({
         //   console.log(params)
         // })
         chartInsRef.current.on('mouseover', (params) => {
-          console.log(params.event?.event)
           const originEvent = params.event?.event
           setEventPos({ clientX: originEvent.clientX, clientY: originEvent.clientY })
           setdataIndex(params.dataIndex)
@@ -81,7 +80,7 @@ const LineChartT = ({
             if (left > chartRect?.width - rect?.width) {
               left = chartRect?.width - rect?.width
             }
-            setTipPos({ left: left, top: originEvent.zrY - rect?.height / 2, opacity: 1 })
+            setTipPos({ left: left, top: originEvent.zrY - 80, opacity: 1 })
           }
         })
       }
@@ -99,11 +98,13 @@ const LineChartT = ({
         ref={chartTipRef}
         onMouseLeave={e => {
           e.stopPropagation()
-          setTipPos({ left: '-200%', top: 12, opacity: 0 })
+          // setTipPos({ left: '-200%', top: 12, opacity: 0 })
         }}
         className='chart-tip'
         style={{ left: tipPos.left, top: tipPos.top, opacity: tipPos.opacity }}>
-        {`${serieData.name}: ${serieData.value} ETH`}
+          <div className='chart-tip2'>
+            {`${serieData.name}: ${serieData.value} ETH`}
+          </div>
       </div>
     </div>
   )

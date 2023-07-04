@@ -60,7 +60,7 @@ const MenuWhite = () => {
               router.push('/')
             }}
           />
-          <span className="menu-text text-[24px] font-fmedium ml-5">Ranking</span>
+          <span className="num-text1 text-[24px] font-fmedium ml-5">Ranking</span>
         </div>
         
         <div className='text-base font-fbold text-[#3A3A3A] flex space-x-9 items-center'>
@@ -93,7 +93,7 @@ const MenuWhite = () => {
               window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
           }}>
             <div className='bg-[#ffffff] hover:bg-transparent transition-all rounded-[3px] flex justify-center items-center h-full '>
-              <span className="menu-text">LAUNCH APP</span>
+              <span className="num-text1">LAUNCH APP</span>
             </div>
             
           </div>
