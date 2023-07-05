@@ -1,5 +1,8 @@
 import React, { useMemo, useState } from "react";
 import LazyImage from "../../../components/LazyImage";
+import CopyClipboard from '@/components/CopyClipboard';
+import { openBrowser } from '@/utils';
+import { redditUserUrl } from '@/config';
 
 const TextMain = ({ children }) => {
   return (
@@ -53,8 +56,13 @@ const HolderInfo = ({
             {
               ownerInfo?.user_name ?
               <>
-                <TextSub>BridgetheDivide</TextSub>
-                <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+                <TextSub>{ownerInfo?.user_name}</TextSub>
+                <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" 
+                  onClick={e => {
+                    e.stopPropagation()
+                    openBrowser(redditUserUrl + ownerInfo?.user_name || '')
+                  }}
+                />
               </> : <TextSub>none</TextSub>
             }
             
@@ -76,15 +84,11 @@ const HolderInfo = ({
           </div>
           <div className="mt-2 flex items-center">
             <TextSub>{ownerInfo?.holder_address}</TextSub>
-            <LazyImage src="/addressan/images/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" 
-              onClick={(e) => {
-                e.stopPropagation()
-                navigator.clipboard.writeText(ownerInfo?.holder_address)
-                  .then(() => {
-                    // Toast.show({ content: 'Copied', position: 'bottom' })
-                  })
-              }}
-            />
+            <CopyClipboard text={ownerInfo?.holder_address}>
+              <LazyImage src="/addressan/images/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" 
+                
+              />
+            </CopyClipboard>
           </div>
         </div>
         </div>
@@ -109,7 +113,7 @@ const HolderInfo = ({
                   infererLabels.slice(0, 6).map((label, key) => {
                     return (
                       <div key={label.label_name + key} className="infer-label2">
-                        <div className="text-[20px] text-[#3F4664]">{label.label_name}</div>
+                        <div className="text-[20px] text-[#3F4664] text-label2">{label.label_name}</div>
                       </div>
                     )
                   })
@@ -124,21 +128,21 @@ const HolderInfo = ({
          <div className="mt-[10px] pl-[30px]">
             <div className="bg-[#F8F9FF] rounded h-[76px] text-[20px] font-fbold text-[#3F4664]">
               <div className="flex h-[38px]">
-                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF]">
+                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF] hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Balance</div>
                   <div className="text-[20px] font-fbold text-[#3F4664]">{itemData.balance || '--'} ETH</div>
                 </div>
-                <div className="w-[50%] flex justify-between px-6 items-center">
+                <div className="w-[50%] flex justify-between px-6 items-center hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Birth on</div>
                   <div className="">{itemData.birth_on || '--'}</div>
                 </div>
               </div>
               <div className="flex h-[38px]">
-                <div className="w-[50%] flex justify-between px-6 items-center">
+                <div className="w-[50%] flex justify-between px-6 items-center hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Tx count</div>
                   <div className="text-[20px] font-fbold text-[#3F4664]">{itemData.tx_count || '--'}</div>
                 </div>
-                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF]">
+                <div className="w-[50%] flex justify-between px-6 items-center bg-[#EEF4FF] hover:bg-[#D7E4FD] cursor-pointer">
                   <div className="">Active since</div>
                   <div className="">{itemData.active_since || '--'}</div>
                 </div>

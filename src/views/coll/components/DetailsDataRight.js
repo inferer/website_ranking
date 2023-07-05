@@ -1,14 +1,12 @@
 import useModal from "@/hooks/useModal";
-import LazyImage from "../../../components/LazyImage";
-import { formatName, formatNumber, openBrowser } from '@/utils';
+import { Like, UnLike, StarList, CollectIcon, ShareIcon, BuyIcon, MsgIcon } from './coms';
+import { openBrowser, formatNumber } from '@/utils';
 import { useRouter } from "next/router";
 import WalletModal from "@/components/walletmodal/WalletModal";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useActiveWeb3React from "@/hooks/useActiveWeb3React";
 import { message } from 'antd';
-import DetailsDataRight from './DetailsDataRight'
-import CopyClipboard from '@/components/CopyClipboard';
-import { redditUserUrl } from '@/config';
+import { redditShareUrl, redditBuyUrl, redditChatUrl } from '@/config'
 
 import { useUserStore } from "@/state";
 
@@ -31,27 +29,13 @@ export const randomCount5 = () => {
 }
 
 
-const TextMain = ({ children }) => {
-  return (
-    <div className="text-[20px] font-fbold text-[#3F4664] leading-[26px]">{children}</div>
-  )
-}
-const TextSub = ({ children }) => {
-  return (
-    <div className="text-[rgba(63,70,100,0.6)] text-[16px] leading-6">
-      {children}
-    </div>
-  )
-}
-
-const DetailsData = ({
+const DetailsDataRight = ({
   itemData
 }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const { account } = useActiveWeb3React()
   const router = useRouter()
   const item = itemData
-
   const [ onPrresent, onDimiss ] = useModal(<WalletModal />)
 
   const userId = useUserStore(state => state.userId)
@@ -59,13 +43,20 @@ const DetailsData = ({
   const collectNftColl = useUserStore(state => state.collectNftColl)
   const getNFTCollBaseInfo = useUserStore(state => state.getNFTCollBaseInfo)
 
-  const [starNums, setStarNums] = useState(randomStar())
+  const [starNums, setStarNums] = useState(0)
   const [isFav, setisFav] = useState(false)
   const [isLike, setisLike] = useState(false)
   const [isUnlike, setisUnlike] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
   const [unlikeCount, setUnlikeCount] = useState(0)
   const [currentId, setCurrentId] = useState('')
+
+  const isColl = useMemo(() => {
+    if (router.pathname === '/top-price-collection/[...address]' || router.pathname === '/top-popullar-collection/[...address]') {
+      return true
+    }
+    return false
+  }, [router])
 
   useEffect(() => {
     setisFav(nftBaseInfo.is_fav)
@@ -75,6 +66,9 @@ const DetailsData = ({
     setUnlikeCount((nftBaseInfo.unlikeCount || 0) + (itemData.price_rank < 5 ? randomCount5() : randomCount20()))
   }, [nftBaseInfo])
 
+  useEffect(() => {
+    setStarNums(randomStar())
+  }, [])
 
   const handleAction = useCallback(async (action) => {
     if (!account) {
@@ -152,73 +146,27 @@ const DetailsData = ({
 
 
   return (
-    <div className="top__bg w-[1196px] h-[503px] rounded-[6px] mt-[138px] flex justify-between relative">
+    <div className="pr-[50px]">
       {contextHolder}
-      <div className=" absolute w-[80px] h-[110px] border-[4px] border-white rounded-[6px] left-[40px] -top-[60px] overflow-hidden">
-        <LazyImage src={itemData.series_img_url || "/addressan/images/demo.png"} className="w-full h-full" />
-      </div>
-      <div className="pl-10 w-[570px]">
-        <div className="flex items-center mt-[79px]">
-          <div className="text-[32px] font-fbold text-[#3F4664] leading-[42px]">{formatName(item.series_name)}</div>
-          <LazyImage src="/addressan/reddit_logo.png" className="w-[36px] h-[36px] ml-3" />
-        </div>
-        
-        <div className="mt-[58px]">
-          <div className="flex items-center">
-            <LazyImage src="/addressan/link.png" className="w-6 h-6 mr-[6px]" />
-            <TextMain>Contract</TextMain>
-          </div>
-          <div className="mt-2 flex items-center">
-            <TextSub>{item.token_address}</TextSub>
-            <CopyClipboard text={item.token_address}>
-              <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
-            </CopyClipboard>
-          </div>
-        </div>
-        <div className="mt-[24px]">
-          <div className="flex items-center">
-            <LazyImage src="/addressan/art.png" className="w-6 h-6 mr-[6px]" />
-            <TextMain>Artist</TextMain>
-          </div>
-          <div className="mt-2 flex items-center">
-            <TextSub>{item.series_creator}</TextSub>
-            <LazyImage src="/addressan/images/share.png" className="w-[16px] h-[16px] ml-[6px] cursor-pointer"
-              onClick={e => {
-                e.stopPropagation()
-                openBrowser(redditUserUrl + item.series_creator || '')
-              }}
-            />
-          </div>
-        </div>
-        <div className="mt-[24px]">
-          <div className="flex items-center">
-            <LazyImage src="/addressan/info.png" className="w-6 h-6 mr-[6px]" />
-            <TextMain>Description</TextMain>
-          </div>
-          <div className="mt-2 flex items-center">
-            <TextSub>{item.series_name}</TextSub>
-          </div>
+      <div className="flex justify-end mt-[54px]">
+        <div className="flex">
+          <Like 
+            isLike={isLike}
+            isUnlike={isUnlike}
+            likeCount={likeCount}
+            onClick={() => handleAction('like')}
+          />
+          <div className="line__v mx-[10px]"></div>
+          <UnLike
+            unlikeCount={unlikeCount}
+            isLike={isLike}
+            isUnlike={isUnlike}
+            onClick={() => handleAction('unlike')}
+          />
         </div>
       </div>
-      <DetailsDataRight itemData={itemData} />
-      {/* <div className="pr-[50px]">
-        <div className="flex justify-end mt-[54px]">
-          <div className="flex">
-            <Like 
-              isLike={isLike}
-              isUnlike={isUnlike}
-              likeCount={likeCount}
-              onClick={() => handleAction('like')}
-            />
-            <div className="line__v mx-[10px]"></div>
-            <UnLike
-              unlikeCount={unlikeCount}
-              isLike={isLike}
-              isUnlike={isUnlike}
-              onClick={() => handleAction('unlike')}
-            />
-          </div>
-        </div>
+      {
+        isColl && 
         <div className="flex justify-end mt-[58px]">
           {
             router.pathname === '/top-price-collection/[...address]' && 
@@ -236,39 +184,61 @@ const DetailsData = ({
           }
           
         </div>
-        <div className="flex justify-end mt-[15px]">
-          <div className="flex items-center">
-            <StarList score={starNums} />
+      }
+      {
+        !isColl && 
+        <div className="flex justify-end mt-[58px]">
+          <div className="flex items-baseline">
+          {
+            router.pathname === "/top-price/[...address]" &&
+            <>
+              <div className="num-text1 text-[102px] font-fbold leading-[110%]">{formatNumber(Number(itemData.USD_price))}</div>
+              <div className="num-text1 text-[56px] font-fbold ml-3">$</div>
+            </>
+          }
+          {
+            router.pathname === "/top-popullar/[...address]" &&
+            <>
+              <div className="num-text1 text-[102px] font-fbold leading-[110%]">{itemData.nums}</div>
+              <div className="num-text1 text-[56px] font-fbold ml-3">txs</div>
+            </>
+          }
           </div>
         </div>
-        <div className="flex justify-end mt-[120px]">
-          <div className="flex items-center">
-            <CollectIcon
-              value={isFav} 
-              onClick={() => {
-                handleAction('collect')
-              }}
-            />
-            <ShareIcon 
-              onClick={() => {
-                openBrowser(redditShareUrl + (itemData?.series_creator || '') + '/submit')
-              }}
-            />
-            <BuyIcon 
-              onClick={() => {
-                openBrowser(redditBuyUrl + `${itemData.token_address}/${itemData?.token_id || 0}`)
-              }}
-            />
-            <MsgIcon 
-              onClick={() => {
-                openBrowser(redditChatUrl + `${itemData?.series_creator}`)
-              }}
-            />
-          </div>
+      }
+      
+      <div className="flex justify-end mt-[15px]">
+        <div className="flex items-center">
+          <StarList score={starNums} />
         </div>
-      </div> */}
+      </div>
+      <div className="flex justify-end mt-[120px]">
+        <div className="flex items-center">
+          <CollectIcon
+            value={isFav} 
+            onClick={() => {
+              handleAction('collect')
+            }}
+          />
+          <ShareIcon 
+            onClick={() => {
+              openBrowser(redditShareUrl + (itemData?.NFT_creator || itemData?.series_creator || '') + '/submit')
+            }}
+          />
+          <BuyIcon 
+            onClick={() => {
+              openBrowser(redditBuyUrl + `${itemData.token_address}/${itemData?.token_id || 0}`)
+            }}
+          />
+          <MsgIcon 
+            onClick={() => {
+              openBrowser(redditChatUrl + `${itemData?.NFT_creator || itemData?.series_creator}`)
+            }}
+          />
+        </div>
+      </div>
     </div>
   )
 }
 
-export default DetailsData
+export default DetailsDataRight

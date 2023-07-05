@@ -48,3 +48,7 @@ export function transformTime(timestamp: number) {
 
   return addZero(h) + ':' + addZero(m) + ' ' + addZero(M) + "/" + addZero(d) + ' ' + y;
 }
+
+export function openBrowser(url: string) {
+  window.open(url, '_blank');
+}

@@ -136,16 +136,20 @@ body {
 .table__body .table__row:nth-child(2n) {
   background-color: #F8F9FF;
 }
+.table__body .table__row:hover {
+  background-color: #D7E4FD;
+}
 .chart-tip {
   position: absolute;
   background-color: rgba(51, 56, 62, 0.8);
-  border-radius: 4px;
-  font-size: 10px;
+  border-radius: 8px;
+  font-size: 20px;
   color: #E8EAEC;
   font-weight: 500;
-  padding: 2px 6px;
+  padding: 4px 12px;
+  display: flex;
   align-items: center;
-  height: 24px;
+  height: 40px;
   opacity: 0;
   cursor: pointer;
 }
@@ -336,6 +340,18 @@ body {
   font-size: 12px;
   margin-bottom: 29px;
   margin-right: 24px;
+  cursor: pointer;
+}
+.infer-label:hover {
+  background: linear-gradient(122deg, #3555FF 15.65%, #A157FF 77.85%);
+}
+.infer-label:hover .num-text1 {
+  color: #fff;
+  background: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #fff;
+  background-clip: text;
+  text-fill-color: #fff;
 }
 
 .infer-label2 {
@@ -345,10 +361,16 @@ body {
   background-color: #EEF4FF;
   margin-bottom: 10px;
   margin-right: 24px;
+  cursor: pointer;
 }
-.menu-text{
-  
+.infer-label2:hover .text-label2{
+  background: linear-gradient(124.16deg, #3555FF 8.05%, #A157FF 66.68%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
+
 
 .like-wrap .menu-text.up {
   background: linear-gradient(280.16deg, #F73B47 8.51%, #FF7E35 142.08%);
