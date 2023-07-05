@@ -72,7 +72,7 @@ const TopAccounts = () => {
                       <TableCell className="w-[156px] ">{item.active_since}</TableCell>
                       <TableCell className="w-[133px] justify-center ">{item.tx_count}</TableCell>
                       <TableCell className="w-[133px] justify-center">
-                        <div className=' num-text1 text-[20px]'>{Number(item.infer_score).toFixed(1)}</div>
+                        <div className=' num-text1 text-[20px]'>{Number(item.infer_score ?? 0).toFixed(1)}</div>
                       </TableCell>
                       <TableCell className="w-[133px] justify-end">
                         <div className='num-text3 text-[20px]'>${formatNumber(Number(item.volume))}</div>

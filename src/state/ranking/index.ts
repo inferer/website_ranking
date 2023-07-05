@@ -170,6 +170,7 @@ const useRankingStore = create<RankingState>()((set, get) => ({
             const lastTx = item.info['User Latest Tx Timestamp'] || ''
             newItem.active_since = lastTx.split(',')[0]
             newItem.tx_count = item.info['User Total Tx Count'] || ''
+            newItem.NFT_counts = item.info['nft_count'] || ''
             newItem.infer_score = levelInfo[item.level?.toLowerCase()]
           }
           return {...res.data[index], ...newItem, analysisData: item }
@@ -203,6 +204,7 @@ const useRankingStore = create<RankingState>()((set, get) => ({
             const lastTx = item.info['User Latest Tx Timestamp'] || ''
             newItem.active_since = lastTx.split(',')[0]
             newItem.tx_count = item.info['User Total Tx Count'] || ''
+            newItem.NFT_counts = item.info['nft_count'] || ''
             newItem.infer_score = levelInfo[item.level?.toLowerCase()]
           }
           return {...res.data[index], ...newItem, analysisData: item }
