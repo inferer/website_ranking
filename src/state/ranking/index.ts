@@ -150,6 +150,37 @@ const useRankingStore = create<RankingState>()((set, get) => ({
 
     }
   },
+  topActiveUserList: [],
+  getTopActiveUsers: async () => {
+    if (get().topActiveUserList.length > 0) {
+      return
+    }
+    const res = await fetcher('/api/web/ranking/getTopActiveUsers')
+    if (res.status === 200) {
+      set({ topActiveUserList: res.data || [] })
+      // 异步获取分析相关数据
+      const addressList = (res.data || []).map((item: { holder_address: any }) => item.holder_address)
+      const res2 = await fetcher('/api/web/ranking/getTopAccountsAnalysisData', { addressList })
+      if (res2.status === 200) {
+        const newData = (res2.data || []).map((item: any, index: number) => {
+          let newItem = { ...item }
+          if (item.info) {
+            const firstTx = item.info['User First Tx Timestamp'] || ''
+            newItem.birth_on = firstTx.split(',')[0]
+            const lastTx = item.info['User Latest Tx Timestamp'] || ''
+            newItem.active_since = lastTx.split(',')[0]
+            newItem.tx_count = item.info['User Total Tx Count'] || ''
+            newItem.infer_score = levelInfo[item.level?.toLowerCase()]
+          }
+          return {...res.data[index], ...newItem, analysisData: item }
+        })
+
+        set({ topActiveUserList: newData })
+
+      }
+
+    }
+  },
   topProfitRatiosList: [],
   getTopProfitRatios: async () => {
     if (get().topProfitRatiosList.length > 0) {

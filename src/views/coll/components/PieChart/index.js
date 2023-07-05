@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, forwardRef, useImperativeHandle, } from 'react';
 import * as echarts from 'echarts';
 
 const PieChartT = ({
   dataList,
   id
-}) => {
+}, ref) => {
   const chartRef = useRef(null)
   useEffect(() => {
     if (dataList.length <= 0) return
@@ -72,6 +72,28 @@ const PieChartT = ({
       option && chartRef.current.setOption(option);
     }
   }, [dataList])
+  const currentIndex = useRef(0)
+
+  useImperativeHandle(ref, () => ({
+    dispatchDownplay: (index) => {
+      if(chartRef.current) {
+        chartRef.current.dispatchAction({
+          type: 'downplay',
+          seriesIndex: 0,
+          dataIndex: index
+        });
+      }
+    },
+    dispatchHighlight: (index) => {
+      if(chartRef.current) {
+        chartRef.current.dispatchAction({
+          type: 'highlight',
+          seriesIndex: 0,
+          dataIndex: index
+        });
+      }
+    }
+  }))
 
   return (
     <div id={id} className="" style={{ height: '200px', width: '200px' }}>
@@ -80,5 +102,5 @@ const PieChartT = ({
   )
 }
 
-export default PieChartT
+export default forwardRef(PieChartT)
 
