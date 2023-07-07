@@ -10,7 +10,7 @@ export const TTitle = ({
 }) => {
     const [active, setActive] = useState(false)
     return (
-      <div className=' font-fmedium text-[24px] leading-[36px] flex items-center relative mt-3'
+      <div className=' font-ffmedium text-[24px] leading-[36px] text-black flex items-center relative mt-3'
       >
         <div className='' style={{ lineHeight: '18px' }}>{text}</div>
         {

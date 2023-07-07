@@ -9,7 +9,7 @@ const CollInfo = ({
 }) => {
   return (
     <div className="mt-[120px] coll_bg h-[484px] rounded-xl flex relative">
-      <LazyImage src="/addressan/circle4.png" className="w-[62px] h-[62px] absolute left-[11px] -top-[31px]" />
+      <LazyImage src="/addressan/circle4.png" className="w-[70px] h-[70px] absolute left-[11px] -top-[31px]" />
       <div className="flex-1">
         <div className="flex mt-[82px] mb-5 justify-center">
           <div className="relative w-[158px] h-[208px] flex items-center justify-center">
@@ -27,7 +27,7 @@ const CollInfo = ({
         
       </div>
       <div className="w-[755px] px-[64px] pr-[98px] pt-[30px] pb-[70px]">
-        <div className=" num-text1 font-fbold text-[32px] mt-3 text-ellipsis">
+        <div className=" num-text1 font-fbold text-[32px] mt-3 text-ellipsis text-center">
           {itemData.NFT_series_name}
         </div>
         <div className="mt-[32px]">

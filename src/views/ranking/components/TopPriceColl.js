@@ -51,7 +51,7 @@ const TopPriceColl = () => {
                       </TableCell>
                       <TableCell className="w-[148px] ">{formatName(item.series_creator)}</TableCell>
                       <TableCell className="w-[140px] justify-center">
-                        <div className=' menu-text text-[20px]'>{item.infererAnalysis.score_avg}</div>
+                        <div className=' num-text1 text-[20px]'>{item.infererAnalysis.score_avg}</div>
                       </TableCell>
                       <TableCell className="w-[208px] justify-end">
                         <div className='w-[130px]'>

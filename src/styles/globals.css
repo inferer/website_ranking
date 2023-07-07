@@ -93,6 +93,12 @@ body {
 .ranking__wrap .font-fbold {
   font-family: DMSans-Bold;
 }
+.ranking__wrap .font-ffmedium{
+  font-family: Poppins-Medium
+}
+.ranking__wrap .font-ffbold {
+  font-family: Poppins-Bold;
+}
 
 .launch-btn {
   width: 141px;
@@ -156,8 +162,11 @@ body {
 .chart-tip {
   position: absolute;
   height: 100px;
+  width: 200px;
   opacity: 0;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 .num-text1 {
   background: linear-gradient(124.16deg, #3555FF 8.05%, #A157FF 66.68%);
@@ -378,7 +387,7 @@ body {
 }
 
 
-.like-wrap .menu-text.up {
+.like-wrap .num-text1.up {
   background: linear-gradient(280.16deg, #F73B47 8.51%, #FF7E35 142.08%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -386,7 +395,8 @@ body {
   text-fill-color: transparent;
 }
 
-.like-wrap .menu-text.down {
+
+.like-wrap .num-text1.down {
   background: linear-gradient(124.16deg, #3F4664 8.05%, #3F4664 66.68%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

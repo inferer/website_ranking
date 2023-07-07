@@ -88,12 +88,13 @@ const MenuWhite = () => {
               FAQ
           </MenuItem>
           <div className='launch-btn p-[2px] cursor-pointer ' 
-          onClick={()=>{
-              // router.push('/app')
-              window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
-          }}>
-            <div className='bg-[#ffffff] hover:bg-transparent transition-all rounded-[3px] flex justify-center items-center h-full '>
-              <span className="num-text1">LAUNCH APP</span>
+            onClick={()=>{
+                // router.push('/app')
+                window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
+            }}>
+            <div className='bg-[#ffffff] hover:bg-transparent hover:text-white transition-all rounded-[3px] flex justify-center items-center h-full group '>
+              <span className="num-text1 inline-block group-hover:hidden">LAUNCH APP</span>
+              <span className=" hidden group-hover:inline-block">LAUNCH APP</span>
             </div>
             
           </div>
