@@ -40,7 +40,7 @@ export const Like = ({
         onMouseLeave={handleLeave}
         className={`flex items-center cursor-pointer like-wrap ${isLike || hover ? 'is-like' : ''} ${isUnlike ? ' opacity-70' : ''}`}>
         <img src={isLike || hover ? Like1Png : LikePng} alt="" className='w-[28px] h-[28px] mr-[4px]' />
-        <div className={`menu-text text-[22px] ${isLike || hover ? 'up' : ''}`}>{likeCount}</div>
+        <div className={`num-text1 text-[22px] ${isLike || hover ? 'up' : ''}`}>{likeCount}</div>
       </div>
     )
   }
@@ -69,13 +69,13 @@ export const UnLike = ({
         onMouseLeave={handleLeave}
         className={`flex items-center cursor-pointer like-wrap ${isUnlike || hover ? 'is-like' : ''} ${isLike ? ' opacity-70' : ''}`}>
         <img src={isUnlike || hover ? Down2Png : DownPng} alt="" className='w-[28px] h-[28px] mr-[4px]' />
-        <div className={`menu-text text-[22px] text ${isUnlike || hover ? 'down' : ''}`}>{unlikeCount}</div>
+        <div className={`num-text1 text-[22px] text ${isUnlike || hover ? 'down' : ''}`}>{unlikeCount}</div>
       </div>
     )
   }
 
 export const StarList = ({
-  score
+  score = 1
 }) => {
 
     return (

@@ -4,6 +4,7 @@ import RedditTitle from './components/RedditTitle';
 import TopPriceColl from './components/TopPriceColl';
 import TopPopullarColl from './components/TopPopullarColl';
 import TopAccounts from './components/TopAccounts';
+import TopActiveUsers from './components/TopActiveUsers';
 import TopProfitRatios from './components/TopProfitRatios';
 import TopPrice from './components/TopPrice';
 import TopPopullar from './components/TopPopullar';
@@ -30,6 +31,9 @@ const Ranking = () => {
             </div>
             <div className="mb-[120px]">
               <TopAccounts />
+            </div>
+            <div className="mb-[120px]">
+              <TopActiveUsers />
             </div>
             <div className="mb-[120px]">
               <TopProfitRatios />

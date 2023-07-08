@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import LazyImage from "../../../components/LazyImage";
-import { Like, UnLike, StarList, CollectIcon, ShareIcon, BuyIcon, MsgIcon } from '../../coll/components/coms';
 import { formatName, formatNumber, formatAddress } from '@/utils';
+import DetailsDataRight from "@/views/coll/components/DetailsDataRight";
+import CopyClipboard from '@/components/CopyClipboard';
 
 
 const TextMain = ({ children }) => {
@@ -25,7 +26,7 @@ const DetailsData = ({
 
   return (
     <div className="top__bg w-[1196px] h-[499px] rounded-[6px] mt-[138px] flex justify-between relative">
-      <div className=" absolute w-[80px] h-[110px] border-[4px] border-white rounded-[6px] left-[40px] -top-[60px] overflow-hidden">
+      <div className=" absolute w-[88px] h-[118px] border-[4px] border-white rounded-[12px] left-[40px] -top-[60px] overflow-hidden">
         <img src={itemData.NFT_img_url || itemData.NFT_series_img_url || "/ranking/demo.png"} className="w-full h-full" />
       </div>
       <div className="pl-10 w-[570px]">
@@ -49,7 +50,9 @@ const DetailsData = ({
           </div>
           <div className="mt-2 flex items-center">
             <TextSub>{itemData.token_address}</TextSub>
-            <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+            <CopyClipboard text={itemData.token_address}>
+              <LazyImage src="/addressan/copy.png" className="w-[16px] h-[16px] ml-[4px] cursor-pointer" />
+            </CopyClipboard>
           </div>
         </div>
         <div className="mt-[20px]">
@@ -71,7 +74,8 @@ const DetailsData = ({
           </div>
         </div>
       </div>
-      <div className="pr-[50px]">
+      <DetailsDataRight itemData={itemData} />
+      {/* <div className="pr-[50px]">
         <div className="flex justify-end mt-[54px]">
           <div className="flex">
             <Like likeCount={888} />
@@ -110,7 +114,7 @@ const DetailsData = ({
             <MsgIcon />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

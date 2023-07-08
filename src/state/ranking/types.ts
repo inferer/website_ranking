@@ -43,6 +43,20 @@ export interface ITopAccountItem {
   "analysisData": {[key: string]: any}
 }
 
+export interface ITopActiveUserItem {
+  "holder_address": string,
+  "NFT_counts": number,
+  "transaction_num": number,
+  "account_rank": number,
+  "user_name": string,
+  "img_url": string,
+  "birth_on": string,
+  "active_since": string,
+  "tx_count": string,
+  "infer_score": string,
+  "analysisData": {[key: string]: any}
+}
+
 export interface ITopProfitRatiosItem {
   "holder_address": string,
   "buy_price": number,
@@ -107,12 +121,14 @@ export interface RankingState {
   topPriceCollList: ItopPriceCollItem[],
   topPopularCollList: ITopPopularCollItem[] ,
   topAccountList: ITopAccountItem[],
+  topActiveUserList: ITopActiveUserItem[],
   topProfitRatiosList: ITopProfitRatiosItem[],
   topPriceItemList: ITopPriceItem[],
   topPopullarItemList: ITopPopullarItem[],
   getTopPriceColl: () => void,
   getTopPopularColl: () => void,
   getTopAccounts: () => void,
+  getTopActiveUsers: () => void,
   getTopProfitRatios: () => void,
   getTopPrice: () => void,
 }

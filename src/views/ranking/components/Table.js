@@ -4,7 +4,7 @@ export const TableCell = ({
   className
 }) => {
   return (
-    <div className={` px-5 flex items-center font-dbold text-sm leading-[21px] text-[#3F4664] ${className}`}>
+    <div className={` px-5 flex items-center font-dbold text-sm leading-[21px] text-[#3F4664] whitespace-nowrap ${className}`}>
       { children }
     </div>
   )

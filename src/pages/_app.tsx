@@ -1,6 +1,13 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Providers from '@/contexts/Providers'
+import { message } from 'antd';
+import GlobalStatus from '@/components/GlobalStatus';
+
+message.config({
+  prefixCls: 'inferer-message',
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -8,7 +15,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Providers>
+        <Component {...pageProps} />
+        <GlobalStatus />
+      </Providers>
     </>
     
   )

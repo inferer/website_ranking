@@ -14,11 +14,11 @@ export const levelInfo = {
 
 const useRankingStore = create<RankingState>()((set, get) => ({
   topPriceCollList: [],
-  getTopPriceColl: async () => {
+  getTopPriceColl: async (pageSize = 7) => {
     if (get().topPriceCollList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPriceColl')
+    const res = await fetcher('/api/web/ranking/getTopPriceColl', { pageSize })
     if (res.status === 200) {
       const newData = (res.data || []).map((item: ItopPriceCollItem) => {
         const volumeMonthHistory = item.volumeMonthHistory
@@ -68,11 +68,11 @@ const useRankingStore = create<RankingState>()((set, get) => ({
   },
 
   topPopularCollList: [],
-  getTopPopularColl: async () => {
+  getTopPopularColl: async (pageSize = 7) => {
     if (get().topPopularCollList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPopularColl')
+    const res = await fetcher('/api/web/ranking/getTopPopularColl', { pageSize })
     if (res.status === 200) {
       const newData = (res.data || []).map((item: ItopPriceCollItem) => {
         const volumeMonthHistory = item.volumeMonthHistory
@@ -120,11 +120,16 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     }
   },
   topAccountList: [],
-  getTopAccounts: async () => {
+  getTopAccounts: async (pageSize = 7) => {
     if (get().topAccountList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopAccounts')
+    const res1 = await fetcher('/api/web/ranking/getTop50Accounts')
+    if (res1.status === 200) {
+      set({ topAccountList: res1.data })
+    }
+    return
+    const res = await fetcher('/api/web/ranking/getTopAccounts', { pageSize })
     if (res.status === 200) {
       set({ topAccountList: res.data || [] })
       // 异步获取分析相关数据
@@ -150,12 +155,54 @@ const useRankingStore = create<RankingState>()((set, get) => ({
 
     }
   },
+  topActiveUserList: [],
+  getTopActiveUsers: async (pageSize = 7) => {
+    if (get().topActiveUserList.length > 0) {
+      return
+    }
+    const res1 = await fetcher('/api/web/ranking/getTop50ActiveUsers')
+    if (res1.status === 200) {
+      set({ topActiveUserList: res1.data })
+    }
+    return
+    const res = await fetcher('/api/web/ranking/getTopActiveUsers', { pageSize })
+    if (res.status === 200) {
+      set({ topActiveUserList: res.data || [] })
+      // 异步获取分析相关数据
+      const addressList = (res.data || []).map((item: { holder_address: any }) => item.holder_address)
+      const res2 = await fetcher('/api/web/ranking/getTopAccountsAnalysisData', { addressList })
+      if (res2.status === 200) {
+        const newData = (res2.data || []).map((item: any, index: number) => {
+          let newItem = { ...item }
+          if (item.info) {
+            const firstTx = item.info['User First Tx Timestamp'] || ''
+            newItem.birth_on = firstTx.split(',')[0]
+            const lastTx = item.info['User Latest Tx Timestamp'] || ''
+            newItem.active_since = lastTx.split(',')[0]
+            newItem.tx_count = item.info['User Total Tx Count'] || ''
+            newItem.NFT_counts = item.info['nft_count'] || ''
+            newItem.infer_score = levelInfo[item.level?.toLowerCase()]
+          }
+          return {...res.data[index], ...newItem, analysisData: item }
+        })
+
+        set({ topActiveUserList: newData })
+
+      }
+
+    }
+  },
   topProfitRatiosList: [],
-  getTopProfitRatios: async () => {
+  getTopProfitRatios: async (pageSize = 7) => {
     if (get().topProfitRatiosList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopProfitRatios')
+    const res1 = await fetcher('/api/web/ranking/getTop50ProfitRatios')
+    if (res1.status === 200) {
+      set({ topProfitRatiosList: res1.data })
+    }
+    return
+    const res = await fetcher('/api/web/ranking/getTopProfitRatios', { pageSize })
     if (res.status === 200) {
   
       set({topProfitRatiosList: res.data || []})
@@ -172,6 +219,7 @@ const useRankingStore = create<RankingState>()((set, get) => ({
             const lastTx = item.info['User Latest Tx Timestamp'] || ''
             newItem.active_since = lastTx.split(',')[0]
             newItem.tx_count = item.info['User Total Tx Count'] || ''
+            newItem.NFT_counts = item.info['nft_count'] || ''
             newItem.infer_score = levelInfo[item.level?.toLowerCase()]
           }
           return {...res.data[index], ...newItem, analysisData: item }
@@ -183,11 +231,11 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     }
   },
   topPriceItemList: [],
-  getTopPrice: async () => {
+  getTopPrice: async (pageSize = 7) => {
     if (get().topPriceItemList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPrice')
+    const res = await fetcher('/api/web/ranking/getTopPrice', { pageSize })
     if (res.status === 200) {
       const newData = (res.data || []).map((item: ITopPriceItem) => {
         const priceMonthHistory = item.priceMonthHistory
@@ -217,11 +265,11 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     }
   },
   topPopullarItemList: [],
-  getTopPopular: async () => {
+  getTopPopular: async (pageSize = 7) => {
     if (get().topPopullarItemList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPopular')
+    const res = await fetcher('/api/web/ranking/getTopPopular', { pageSize })
     if (res.status === 200) {
       const newData = (res.data || []).map((item: ITopPopullarItem) => {
         const priceMonthHistory = item.priceMonthHistory

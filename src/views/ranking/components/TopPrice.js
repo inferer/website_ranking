@@ -4,7 +4,7 @@ import { Table, TableHead, TableBody, TableHeadCell, TableRow, TableCell } from 
 import LazyImage from '../../../components/LazyImage';
 import { LineChartS } from './LineChart';
 import { useRankingStore, useDetailsStore } from '@/state'
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { formatName, formatNumber, formatAddress } from '@/utils';
 import { useRouter } from 'next/router';
 
@@ -15,13 +15,39 @@ const TopPrice = () => {
   const updateTopPriceItem = useDetailsStore(state => state.updateTopPriceItem)
 
   useEffect(() => {
-    getTopPrice()
-  }, [])
+    // if (router.query && router.query.ranking === 'price-popullar') {
+    //   getTopPrice(50)
+    // } else {
+    //   getTopPrice()
+    // }
+    getTopPrice(50)
+  }, [router])
+
+  const filterList = useMemo(() => {
+    if (router.query && router.query.ranking === 'price-popullar') {
+      return topPriceItemList
+    } else {
+      return topPriceItemList.slice(0, 7)
+    }
+  }, [router, topPriceItemList])
 
   return (
     <RankWrap>
       <img src='/ranking/circle8.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
-      <RankTitle>Top Price Avatar</RankTitle>
+      {
+        router.pathname === '/' ?
+          <RankTitle>
+            <div className='flex justify-between items-center'>
+              Top Price Avatar
+              <span className='text-[#357AFF] text-[20px] cursor-pointer'
+                onClick={e => {
+                  e.stopPropagation()
+                  router.push({ pathname: '/top50/price-popullar'})
+                }}
+              >More</span>
+            </div> 
+          </RankTitle> : <div className='h-3'></div>
+      }
       <Table>
         <TableHead>
           <TableHeadCell className="flex-1"><div className='pl-[36px]'>Avatar</div></TableHeadCell>
@@ -30,7 +56,7 @@ const TopPrice = () => {
         </TableHead>
         <TableBody>
           {
-            topPriceItemList.map((item, key) => {
+            filterList.map((item, key) => {
               return <TableRow key={key}
                         onClick={() => {
                           updateTopPriceItem(item)

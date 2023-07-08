@@ -34,7 +34,7 @@ const InferAn = ({
           <div className="" style={{ width: '309px' }}>
             <div className="flex items-center mb-[30px]">
               <div className="text5 text-[24px] font-fbold ">5.0</div>
-              <div className=" relative overflow-hidden mx-2 flex-1">
+              <div className=" relative overflow-hidden mx-2 flex-1 rounded-[40px]">
                 <div className="bg1 opacity-10 score-bar"></div>
                 <div className=" absolute h-1 bg5 score-bar left-0 top-0" style={{ width: per5 + '%' }}></div>
               </div>
@@ -42,15 +42,15 @@ const InferAn = ({
             </div>
             <div className="flex items-center mb-[30px]">
               <div className="text4  text-[24px] font-fbold ">4.0</div>
-              <div className=" relative overflow-hidden mx-2 flex-1">
+              <div className=" relative overflow-hidden mx-2 flex-1 rounded-[40px]">
                 <div className="bg4 opacity-10 score-bar"></div>
                 <div className=" absolute h-1 bg4 score-bar left-0 top-0" style={{ width: per4 + '%' }}></div>
               </div>
               <div className=" text-[20px] shrink-0" style={{ color: '#7F8792', width: '25px' }}>{per4.toFixed(0)}%</div>
             </div>
             <div className="flex items-center">
-              <div className="text3  text-[24px] font-fbold ">3.0</div>
-              <div className=" relative overflow-hidden mx-2 flex-1">
+              <div className="text3 text-[24px] font-fbold ">3.0</div>
+              <div className=" relative overflow-hidden mx-2 flex-1 rounded-[40px]">
                 <div className="bg3 opacity-10 score-bar"></div>
                 <div className=" absolute h-1 bg3 score-bar left-0 top-0" style={{ width: per3 + '%' }}></div>
               </div>
@@ -59,16 +59,16 @@ const InferAn = ({
           </div>
           <div className="ml-[68px]" style={{ width: '309px' }}>
             <div className="flex items-center mb-[30px]">
-              <div className="text2 text-xs leading-4">2.0</div>
-              <div className=" relative overflow-hidden mx-2 flex-1">
+              <div className="text2  text-[24px] font-fbold ">2.0</div>
+              <div className=" relative overflow-hidden mx-2 flex-1 rounded-[40px]">
                 <div className="bg2 opacity-10 score-bar"></div>
                 <div className=" absolute h-1 bg2 score-bar left-0 top-0" style={{ width: per2 + '%' }}></div>
               </div>
               <div className=" text-[20px] shrink-0" style={{ color: '#7F8792', width: '25px' }}>{per2.toFixed(0)}%</div>
             </div>
             <div className="flex items-center">
-              <div className="text1 text-xs leading-4">1.0</div>
-              <div className=" relative overflow-hidden mx-2 flex-1">
+              <div className="text1  text-[24px] font-fbold ">1.0</div>
+              <div className=" relative overflow-hidden mx-2 flex-1 rounded-[40px]">
                 <div className="bg1 opacity-10 score-bar"></div>
                 <div className=" absolute h-1 bg1 score-bar left-0 top-0" style={{ width: per1 + '%' }}></div>
               </div>
@@ -79,7 +79,7 @@ const InferAn = ({
         </div>
         <div className='line_score ml-[74px] mr-[30px]'></div>
         <div className="flex flex-1 items-center justify-center">
-          <div className="menu-text font-fbold text-[176px] leading-[229px] relative -top-[43px]">{Number(itemData.infererAnalysis.score_avg).toFixed(1)}</div>
+          <div className="num-text1 font-fbold text-[176px] leading-[229px] relative -top-[43px]">{Number(itemData.infererAnalysis.score_avg).toFixed(1)}</div>
         </div>
       </div>
       

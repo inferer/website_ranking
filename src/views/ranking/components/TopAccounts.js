@@ -3,10 +3,12 @@ import RankTitle from './RankTitle';
 import { Table, TableHead, TableBody, TableHeadCell, TableRow, TableCell } from './Table';
 import LazyImage from '../../../components/LazyImage';
 import { useRankingStore } from '@/state'
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { formatName, formatNumber, formatAddress } from '@/utils';
+import { useRouter } from 'next/router';
 
 const TopAccounts = () => {
+  const router = useRouter()
   const getTopAccounts = useRankingStore(state => state.getTopAccounts)
   const topAccountList = useRankingStore(state => state.topAccountList)
 
@@ -14,10 +16,31 @@ const TopAccounts = () => {
     getTopAccounts()
   }, [])
 
+  const filterList = useMemo(() => {
+    if (router.query && router.query.ranking === 'accounts') {
+      return topAccountList
+    } else {
+      return topAccountList.slice(0, 7)
+    }
+  }, [router, topAccountList])
+  
   return (
     <RankWrap>
       <img src='/ranking/circle6.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
-      <RankTitle>Top Accounts</RankTitle>
+      {
+        router.pathname === '/' ?
+          <RankTitle>
+            <div className='flex justify-between items-center'>
+              Top Accounts 
+              <span className='text-[#357AFF] text-[20px] cursor-pointer'
+                onClick={e => {
+                  e.stopPropagation()
+                  router.push({ pathname: '/top50/accounts'})
+                }}
+              >More</span>
+            </div> 
+          </RankTitle> : <div className='h-3'></div>
+      }
       <Table>
         <TableHead>
           <TableHeadCell className="flex-1"><div className='pl-[36px]'>Address</div></TableHeadCell>
@@ -30,7 +53,7 @@ const TopAccounts = () => {
         </TableHead>
         <TableBody>
           {
-            topAccountList.map((item, key) => {
+            filterList.map((item, key) => {
               return <TableRow key={key}>
                       <TableCell className="flex-1">
                         <div className=' font-dbold text-base italic w-9'>{key + 1}</div>
@@ -72,7 +95,7 @@ const TopAccounts = () => {
                       <TableCell className="w-[156px] ">{item.active_since}</TableCell>
                       <TableCell className="w-[133px] justify-center ">{item.tx_count}</TableCell>
                       <TableCell className="w-[133px] justify-center">
-                        <div className=' menu-text text-[20px]'>{item.infer_score}</div>
+                        <div className=' num-text1 text-[20px]'>{Number(item.infer_score ?? 0).toFixed(1)}</div>
                       </TableCell>
                       <TableCell className="w-[133px] justify-end">
                         <div className='num-text3 text-[20px]'>${formatNumber(Number(item.volume))}</div>
