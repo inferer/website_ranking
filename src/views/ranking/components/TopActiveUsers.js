@@ -3,39 +3,40 @@ import RankTitle from './RankTitle';
 import { Table, TableHead, TableBody, TableHeadCell, TableRow, TableCell } from './Table';
 import LazyImage from '../../../components/LazyImage';
 import { useRankingStore } from '@/state'
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { formatName, formatNumber, formatAddress } from '@/utils';
 import { useRouter } from 'next/router';
+import { useMemo } from 'react'
 
-const TopAccounts = () => {
+const TopActiveUsers = () => {
   const router = useRouter()
-  const getTopAccounts = useRankingStore(state => state.getTopAccounts)
-  const topAccountList = useRankingStore(state => state.topAccountList)
+  const getTopActiveUsers = useRankingStore(state => state.getTopActiveUsers)
+  const topActiveUserList = useRankingStore(state => state.topActiveUserList)
 
   useEffect(() => {
-    getTopAccounts()
+    getTopActiveUsers()
   }, [])
 
   const filterList = useMemo(() => {
-    if (router.query && router.query.ranking === 'accounts') {
-      return topAccountList
+    if (router.query && router.query.ranking === 'active-users') {
+      return topActiveUserList
     } else {
-      return topAccountList.slice(0, 7)
+      return topActiveUserList.slice(0, 7)
     }
-  }, [router, topAccountList])
-  
+  }, [router, topActiveUserList])
+
   return (
     <RankWrap>
-      <img src='/ranking/circle6.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
+      <img src='/ranking/circle11.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
       {
         router.pathname === '/' ?
           <RankTitle>
             <div className='flex justify-between items-center'>
-              Top Accounts 
+              Top Active Users
               <span className='text-[#357AFF] text-[20px] cursor-pointer'
                 onClick={e => {
                   e.stopPropagation()
-                  router.push({ pathname: '/top50/accounts'})
+                  router.push({ pathname: '/top50/active-users'})
                 }}
               >More</span>
             </div> 
@@ -49,7 +50,7 @@ const TopAccounts = () => {
           <TableHeadCell className="w-[156px]">Active Since</TableHeadCell>
           <TableHeadCell className="w-[133px] justify-center">Tx Count</TableHeadCell>
           <TableHeadCell className="w-[133px] justify-center">Inferer Score</TableHeadCell>
-          <TableHeadCell className="w-[133px] justify-end">Price</TableHeadCell>
+          <TableHeadCell className="w-[133px] justify-end">Transfer</TableHeadCell>
         </TableHead>
         <TableBody>
           {
@@ -98,7 +99,7 @@ const TopAccounts = () => {
                         <div className=' num-text1 text-[20px]'>{Number(item.infer_score ?? 0).toFixed(1)}</div>
                       </TableCell>
                       <TableCell className="w-[133px] justify-end">
-                        <div className='num-text3 text-[20px]'>${formatNumber(Number(item.volume))}</div>
+                        <div className='num-text3 text-[20px]'>{item.transaction_num}</div>
                       </TableCell>
                     </TableRow>
             })
@@ -110,4 +111,4 @@ const TopAccounts = () => {
   )
 }
 
-export default TopAccounts
+export default TopActiveUsers

@@ -54,17 +54,19 @@ const MenuWhite = () => {
       ${showBg ? 'bg-opacity-95' : ''}
     `}>
       <div className='w-full max-w-[1200px] flex justify-between items-center'>
-        <div className="flex items-center">
+        <div className="flex items-center cursor-pointer"
+          onClick={e => {
+            router.push('/')
+          }}
+        >
           <img src='/logo.png' className='w-8 h-8' 
-            onClick={e => {
-              router.push('/')
-            }}
+            
           />
-          <span className="menu-text text-[24px] font-fmedium ml-5">Ranking</span>
+          <span className="num-text1 text-[24px] font-fmedium ml-5">Ranking</span>
         </div>
         
         <div className='text-base font-fbold text-[#3A3A3A] flex space-x-9 items-center'>
-          <MenuItem className="cursor-pointer hover:text-[#44488F]">
+          {/* <MenuItem className="cursor-pointer hover:text-[#44488F]">
             <Tooltip placement="bottom" color='#2D2F31' title={'Coming soon'}
               overlayInnerStyle={{borderRadius: '6px', padding: '10px', fontSize: '14px'}}>
               DOCS
@@ -76,7 +78,7 @@ const MenuWhite = () => {
                 overlayInnerStyle={{borderRadius: '6px', padding: '10px', fontSize: '14px'}}>
                 WHITEPAPER
             </Tooltip>
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem className="cursor-pointer hover:text-[#44488F]" onClick={()=>{
             router.push('/community')
           }}>
@@ -88,12 +90,13 @@ const MenuWhite = () => {
               FAQ
           </MenuItem>
           <div className='launch-btn p-[2px] cursor-pointer ' 
-          onClick={()=>{
-              // router.push('/app')
-              window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
-          }}>
-            <div className='bg-[#ffffff] hover:bg-transparent transition-all rounded-[3px] flex justify-center items-center h-full '>
-              <span className="menu-text">LAUNCH APP</span>
+            onClick={()=>{
+                // router.push('/app')
+                window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
+            }}>
+            <div className='bg-[#ffffff] hover:bg-transparent hover:text-white transition-all rounded-[3px] flex justify-center items-center h-full group '>
+              <span className="num-text1 inline-block group-hover:hidden">LAUNCH APP</span>
+              <span className=" hidden group-hover:inline-block">LAUNCH APP</span>
             </div>
             
           </div>

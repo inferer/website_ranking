@@ -165,7 +165,7 @@ export const LineChartS = ({
           color: '#679AFF',
           symbolSize: 0,
           lineStyle: {
-            width: 1
+            width: 2
           },
         }
       ]

@@ -154,7 +154,7 @@ const DetailsData = ({
   return (
     <div className="top__bg w-[1196px] h-[503px] rounded-[6px] mt-[138px] flex justify-between relative">
       {contextHolder}
-      <div className=" absolute w-[80px] h-[110px] border-[4px] border-white rounded-[6px] left-[40px] -top-[60px] overflow-hidden">
+      <div className=" absolute w-[88px] h-[118px] border-[4px] border-white rounded-[12px] left-[40px] -top-[60px] overflow-hidden">
         <LazyImage src={itemData.series_img_url || "/addressan/images/demo.png"} className="w-full h-full" />
       </div>
       <div className="pl-10 w-[570px]">
