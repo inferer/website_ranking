@@ -9,7 +9,7 @@ const CollInfo = ({
 }) => {
   return (
     <div className="mt-[120px] coll_bg h-[484px] rounded-xl flex relative">
-      <LazyImage src="/addressan/circle4.png" className="w-[70px] h-[70px] absolute left-[11px] -top-[31px]" />
+      <LazyImage src="/addressan/circle4.png" className="w-[70px] h-[70px] absolute left-[20px] -top-[31px]" />
       <div className="flex-1">
         <div className="flex mt-[82px] mb-5 justify-center">
           <div className="relative w-[158px] h-[208px] flex items-center justify-center">
