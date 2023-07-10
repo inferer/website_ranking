@@ -99,12 +99,12 @@ const LineChartT = ({
         ref={chartTipRef}
         onMouseLeave={e => {
           e.stopPropagation()
-          // setTipPos({ left: '-200%', top: 12, opacity: 0 })
+          setTipPos({ left: '-200%', top: 12, opacity: 0 })
         }}
         className='chart-tip'
         style={{ left: tipPos.left, top: tipPos.top, opacity: tipPos.opacity }}>
           <div className='chart-tip2'>
-            {`${serieData.name}: ${serieData.value} ETH`}
+            {`${serieData.name}: ${serieData.value} $`}
           </div>
         
       </div>

@@ -116,6 +116,20 @@ body {
   background-image: url('/addressan/bg.png');
   background-size: cover;
 }
+@media screen and (max-width:1680px) {
+  .left1440 {
+    left: -110px;
+  }
+  .ranking-bg {
+    background-image: url('/ranking/bg3_1440.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .addressan-bg {
+    background-image: url('/addressan/bg_1440.png');
+    background-size: cover;
+  }
+}
 .holder_bg {
   background-image: url('/addressan/bg1.png');
   background-size: 100% 100%;

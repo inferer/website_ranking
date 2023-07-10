@@ -62,8 +62,8 @@ const DetailsDataRight = ({
     setisFav(nftBaseInfo.is_fav)
     setisLike(nftBaseInfo.is_like)
     setisUnlike(nftBaseInfo.is_unlike)
-    setLikeCount((nftBaseInfo.likeCount || 0) + randomCount())
-    setUnlikeCount((nftBaseInfo.unlikeCount || 0) + (itemData.price_rank < 5 ? randomCount5() : randomCount20()))
+    setLikeCount((nftBaseInfo.likeCount || 0))
+    setUnlikeCount((nftBaseInfo.unlikeCount || 0))
   }, [nftBaseInfo])
 
   useEffect(() => {

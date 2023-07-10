@@ -15,7 +15,7 @@ const TopProfitRatios = () => {
 
   useEffect(() => {
     getTopProfitRatios()
-  }, [router])
+  }, [])
 
   const filterList = useMemo(() => {
     if (router.query && router.query.ranking === 'profit-ratios') {

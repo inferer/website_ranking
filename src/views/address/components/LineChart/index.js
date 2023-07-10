@@ -103,7 +103,7 @@ const LineChartT = ({
         className='chart-tip'
         style={{ left: tipPos.left, top: tipPos.top, opacity: tipPos.opacity }}>
           <div className='chart-tip2'>
-            {`${serieData.name}: ${serieData.value} ETH`}
+            {`${serieData.name}: ${serieData.value} $`}
           </div>
       </div>
     </div>
