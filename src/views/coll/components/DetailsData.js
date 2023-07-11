@@ -144,11 +144,11 @@ const DetailsData = ({
     }
   }, [onDimiss, account])
 
-  useEffect(() => {
-    if (itemData.token_address) {
-      getNFTCollBaseInfo(itemData.token_address, userId)
-    }
-  }, [itemData, userId])
+  // useEffect(() => {
+  //   if (itemData.token_address) {
+  //     getNFTCollBaseInfo(itemData.token_address, userId)
+  //   }
+  // }, [itemData, userId])
 
 
   return (

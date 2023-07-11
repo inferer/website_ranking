@@ -49,7 +49,7 @@ const AddressAn = () => {
           <MenuWhite />
         </div>
       </div>
-      <div className=" pt-[74px] addressan-bg min-h-screen ">
+      <div className=" pt-[74px] addresscoll-bg min-h-screen ">
         <div className="w-[1200px] mx-auto pb-[145px]">
           <DetailsData 
             itemData={itemData}

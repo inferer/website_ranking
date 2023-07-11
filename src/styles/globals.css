@@ -113,20 +113,28 @@ body {
   background-size: cover;
 }
 .addressan-bg {
+  background-image: url('/addressan/bg_nft.png');
+  background-size: cover;
+}
+.addresscoll-bg {
   background-image: url('/addressan/bg.png');
   background-size: cover;
 }
 @media screen and (max-width:1680px) {
   .left1440 {
-    left: -110px;
+    left: -90px;
   }
   .ranking-bg {
     background-image: url('/ranking/bg3_1440.png');
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .addressan-bg {
+  .addresscoll-bg {
     background-image: url('/addressan/bg_1440.png');
+    background-size: cover;
+  }
+  .addressan-bg {
+    background-image: url('/addressan/bg_nft_1440.png');
     background-size: cover;
   }
 }

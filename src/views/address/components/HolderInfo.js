@@ -30,7 +30,7 @@ const HolderInfo = ({
 
   return (
     <div className="mt-[120px] holder_bg h-[640px] rounded-xl flex relative">
-      <LazyImage src="/addressan/circle4.png" className="w-[62px] h-[62px] absolute left-[11px] -top-[31px]" />
+      <LazyImage src="/addressan/circle4.png" className="w-[70px] h-[70px] absolute left-[20px] -top-[31px]" />
       <div className="flex-1">
         <div className="flex mt-[42px] mb-5 justify-center">
           <div className="relative w-[132px] h-[174px] flex items-center justify-center">

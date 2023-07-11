@@ -177,7 +177,7 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
       const volumeData2: any[] = []
       let total2 = 0
       if (priceMonthHistory && priceMonthHistory.length > 0) {
-        priceMonthHistory.forEach((element: any) => {
+        priceMonthHistory.reverse().forEach((element: any) => {
           xdata2.push(num2Month(element.transaction_month.slice(-2)))
           const volume = Number((element.price_avg).toFixed(1))
           volumeData2.push(volume)
@@ -256,7 +256,7 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
       const volumeData2: any[] = []
       let total2 = 0
       if (priceMonthHistory && priceMonthHistory.length > 0) {
-        priceMonthHistory.forEach((element: any) => {
+        priceMonthHistory.reverse().forEach((element: any) => {
           xdata2.push(num2Month(element.transaction_month.slice(-2)))
           const volume = Number((element.price_avg).toFixed(1))
           volumeData2.push(volume)
