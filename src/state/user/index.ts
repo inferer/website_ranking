@@ -20,15 +20,16 @@ const useUserStore = create<UserState>()((set, get) => ({
       get().register(account)
     }
   },
-  getNFTCollBaseInfo: async (nft_address: string, userid: number) => {
-    const res = await fetcher('/api/trends/getNFTCollBaseInfo', { nft_address, userid, chainid: 1 })
+  getNFTCollBaseInfo: async (token_id: number, nft_address: string, userid: number) => {
+    const res = await fetcher('/api/trends/getNFTBaseInfo', {token_id, nft_address, userid, chainid: 1 })
     if (res.status === 200) {
       set({nftBaseInfo: res.data || {}})
     }
   },
   collectNftColl: async (data) => {
+    console.log(data)
     const userId = get().userId
-    const res = await poster(`/api/trends/collectNftColl`, { ...data, userid: userId })
+    const res = await poster(`/api/trends/collectNft`, { ...data, userid: userId })
     return res
   }
   

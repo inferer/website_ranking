@@ -18,9 +18,9 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     if (get().topPriceCollList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPriceColl', { pageSize })
-    if (res.status === 200) {
-      const newData = (res.data || []).map((item: ItopPriceCollItem) => {
+    const res2 = await fetcher('/api/web/ranking/getTop50PriceColl')
+    if (res2.status === 200) {
+      const newData = (res2.data || []).map((item: ItopPriceCollItem) => {
         const volumeMonthHistory = item.volumeMonthHistory
         const xdata: any[] = []
         const volumeData: any[] = []
@@ -65,6 +65,7 @@ const useRankingStore = create<RankingState>()((set, get) => ({
       
       set({topPriceCollList: newData})
     }
+
   },
 
   topPopularCollList: [],
@@ -72,7 +73,7 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     if (get().topPopularCollList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPopularColl', { pageSize })
+    const res = await fetcher('/api/web/ranking/getTop50PopullarColl', { pageSize })
     if (res.status === 200) {
       const newData = (res.data || []).map((item: ItopPriceCollItem) => {
         const volumeMonthHistory = item.volumeMonthHistory
@@ -235,7 +236,8 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     if (get().topPriceItemList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPrice', { pageSize })
+
+    const res = await fetcher('/api/web/ranking/getTop50Price', { pageSize })
     if (res.status === 200) {
       const newData = (res.data || []).map((item: ITopPriceItem) => {
         const priceMonthHistory = item.priceMonthHistory
@@ -269,7 +271,7 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     if (get().topPopullarItemList.length > 0) {
       return
     }
-    const res = await fetcher('/api/web/ranking/getTopPopular', { pageSize })
+    const res = await fetcher('/api/web/ranking/getTop50Popullar', { pageSize })
     if (res.status === 200) {
       const newData = (res.data || []).map((item: ITopPopullarItem) => {
         const priceMonthHistory = item.priceMonthHistory

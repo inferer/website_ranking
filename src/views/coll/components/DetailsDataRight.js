@@ -75,6 +75,7 @@ const DetailsDataRight = ({
       onPrresent()
       return
     }
+    const token_id = router.query.address[1] || 0
     if (action === 'collect') {
       const res = await collectNftColl({
         "chainid": 1,
@@ -82,7 +83,8 @@ const DetailsDataRight = ({
         "column": "is_fav",
         "is_fav": !isFav,
         "id": nftBaseInfo.id || currentId,
-        "nft_address": item.token_address
+        "nft_address": item.token_address,
+        "token_id": token_id
       })
       if (res.status === 200) {
         setisFav(!isFav)
@@ -102,7 +104,8 @@ const DetailsDataRight = ({
         column: 'is_like',
         is_like: !isLike,
         "id": nftBaseInfo.id || currentId,
-        "nft_address": item.token_address
+        "nft_address": item.token_address,
+        "token_id": token_id
       })
       if (res.status === 200) {
         setLikeCount(isLike ? likeCount - 1 : likeCount + 1)
@@ -119,7 +122,8 @@ const DetailsDataRight = ({
         column: 'is_unlike',
         is_unlike: !isUnlike,
         "id": nftBaseInfo.id || currentId,
-        "nft_address": item.token_address
+        "nft_address": item.token_address,
+        "token_id": token_id
       })
       if (res.status === 200) {
         setUnlikeCount(isUnlike ? unlikeCount - 1 : unlikeCount + 1)
@@ -139,10 +143,10 @@ const DetailsDataRight = ({
   }, [onDimiss, account])
 
   useEffect(() => {
-    if (itemData.token_address) {
-      getNFTCollBaseInfo(itemData.token_address, userId)
+    if (itemData.token_address && userId && router.query.address) {
+      getNFTCollBaseInfo(router.query.address[1] || 0, itemData.token_address, userId)
     }
-  }, [itemData, userId])
+  }, [itemData, userId, router.query.address])
 
 
   return (

@@ -120,7 +120,7 @@ body {
   background-image: url('/addressan/bg.png');
   background-size: cover;
 }
-@media screen and (max-width:1680px) {
+@media screen and (max-width:1670px) {
   .left1440 {
     left: -90px;
   }
