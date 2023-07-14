@@ -15,7 +15,7 @@ const MenuItem = ({ children, text, onClick }) => {
 
 
   return (
-    <div className="text-base font-fbold text-[#3A3A3A] cursor-pointer transition-all"
+    <div style={{ fontFamily: 'Poppins-Bold'}}  className="text-base font-fbold text-[#3A3A3A] cursor-pointer transition-all"
       onClick={e => {
         onClick && onClick()
       }}
@@ -62,7 +62,7 @@ const MenuWhite = () => {
           <img src='/logo.png' className='w-8 h-8' 
             
           />
-          <span className="num-text1 text-[24px] font-fmedium ml-5">Ranking</span>
+          <span className="num-text1 text-[24px] font-fmedium ml-5" style={{ fontFamily: 'Poppins-Medium'}}>Ranking</span>
         </div>
         
         <div className='text-base font-fbold text-[#3A3A3A] flex space-x-9 items-center'>
@@ -94,7 +94,7 @@ const MenuWhite = () => {
                 // router.push('/app')
                 window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
             }}>
-            <div className='bg-[#ffffff] hover:bg-transparent hover:text-white transition-all rounded-[3px] flex justify-center items-center h-full group '>
+            <div style={{ fontFamily: 'Poppins-Bold'}} className='bg-[#ffffff] hover:bg-transparent hover:text-white transition-all rounded-[3px] flex justify-center items-center h-full group '>
               <span className="num-text1 inline-block group-hover:hidden">LAUNCH APP</span>
               <span className=" hidden group-hover:inline-block">LAUNCH APP</span>
             </div>

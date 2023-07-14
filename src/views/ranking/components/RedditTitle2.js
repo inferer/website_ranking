@@ -33,8 +33,12 @@ const RedditTitle2 = () => {
 
   return (
     <div className="flex justify-center h-[231px] relative">
-      <div className=" flex items-center justify-center relative w-[1200px]">
+      <div className=" flex items-center justify-center flex-col relative w-[1200px]">
         <img src={title} className="w-[807px] h-[54px]" />
+        {
+          router.query.ranking === 'price-popullar' && <img src="/ranking/top_popullar.png" className="w-[807px] h-[54px]" />
+        }
+        
         {/* <LazyImage src="/ranking/t_left2.png" className="w-[104px] h-[14px] mr-[10px]" />
         <LazyImage src="/ranking/reddit_logo2.png" className="w-[40px] h-[40px] mr-3" /> */}
         {/* <div className=" font-fbold text-[36px] reddit-title2">{ title }</div> */}
