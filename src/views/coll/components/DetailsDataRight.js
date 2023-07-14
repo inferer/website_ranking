@@ -143,7 +143,7 @@ const DetailsDataRight = ({
   }, [onDimiss, account])
 
   useEffect(() => {
-    if (itemData.token_address && userId && router.query.address) {
+    if (itemData.token_address && router.query.address) {
       getNFTCollBaseInfo(router.query.address[1] || 0, itemData.token_address, userId)
     }
   }, [itemData, userId, router.query.address])
