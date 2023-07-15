@@ -50,59 +50,51 @@ const MenuWhite = () => {
     }
   }, [])
   return (
-    <div className={`justify-center h-[104px] items-center hidden sm:flex transition-all
-      ${showBg ? 'bg-opacity-95' : ''}
-    `}>
-      <div className='w-full max-w-[1200px] flex justify-between items-center'>
-        <div className="flex items-center cursor-pointer"
-          onClick={e => {
-            router.push('/')
-          }}
-        >
-          <img src='/logo.png' className='w-8 h-8' 
-            
-          />
-          <span className="num-text1 text-[24px] font-fmedium ml-5" style={{ fontFamily: 'Poppins-Medium'}}>Ranking</span>
-        </div>
-        
-        <div className='text-base font-fbold text-[#3A3A3A] flex space-x-9 items-center'>
-          {/* <MenuItem className="cursor-pointer hover:text-[#44488F]">
-            <Tooltip placement="bottom" color='#2D2F31' title={'Coming soon'}
-              overlayInnerStyle={{borderRadius: '6px', padding: '10px', fontSize: '14px'}}>
-              DOCS
-            </Tooltip>
-          </MenuItem>
-          
-          <MenuItem className="cursor-pointer hover:text-[#44488F]">
-            <Tooltip placement="bottom" color='#2D2F31' title={'Coming soon'}
-                overlayInnerStyle={{borderRadius: '6px', padding: '10px', fontSize: '14px'}}>
-                WHITEPAPER
-            </Tooltip>
-          </MenuItem> */}
-          <MenuItem className="cursor-pointer hover:text-[#44488F]" onClick={()=>{
-            router.push('/community')
-          }}>
-              COMMUNITY
-          </MenuItem>
-          <MenuItem className="cursor-pointer hover:text-[#44488F]" onClick={()=>{
-            router.push('/faq')
-          }}>
-              FAQ
-          </MenuItem>
-          <div className='launch-btn p-[2px] cursor-pointer ' 
-            onClick={()=>{
-                // router.push('/app')
-                window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
-            }}>
-            <div style={{ fontFamily: 'Poppins-Bold'}} className='bg-[#ffffff] hover:bg-transparent hover:text-white transition-all rounded-[3px] flex justify-center items-center h-full group '>
-              <span className="num-text1 inline-block group-hover:hidden">LAUNCH APP</span>
-              <span className=" hidden group-hover:inline-block">LAUNCH APP</span>
+    <div className="w-full bg-white fixed z-50 left-0 right-0 top-0 menu-title-white ">
+      <div className="w-[1200px] mx-auto">
+        <div className={`justify-center h-[104px] items-center hidden sm:flex transition-all
+          ${showBg ? 'bg-opacity-95' : ''}
+        `}>
+          <div className='w-full max-w-[1200px] flex justify-between items-center'>
+            <div className="flex items-center cursor-pointer"
+              onClick={e => {
+                router.push('/')
+              }}
+            >
+              <img src='/logo.png' className='w-8 h-8' 
+                
+              />
+              <span className="num-text1 text-[24px] font-fmedium ml-5" style={{ fontFamily: 'Poppins-Medium'}}>Ranking</span>
             </div>
             
+            <div className='text-base font-fbold text-[#3A3A3A] flex space-x-9 items-center'>
+              <MenuItem className="cursor-pointer hover:text-[#44488F]" onClick={()=>{
+                router.push('/community')
+              }}>
+                  COMMUNITY
+              </MenuItem>
+              <MenuItem className="cursor-pointer hover:text-[#44488F]" onClick={()=>{
+                router.push('/faq')
+              }}>
+                  FAQ
+              </MenuItem>
+              <div className='launch-btn p-[2px] cursor-pointer ' 
+                onClick={()=>{
+                    // router.push('/app')
+                    window.open('https://chrome.google.com/webstore/detail/inferer/cihpoafnmmlancocngfdmdcfhkfjglnj', '_blank')
+                }}>
+                <div style={{ fontFamily: 'Poppins-Bold'}} className='bg-[#ffffff] hover:bg-transparent hover:text-white transition-all rounded-[3px] flex justify-center items-center h-full group '>
+                  <span className="num-text1 inline-block group-hover:hidden">LAUNCH APP</span>
+                  <span className=" hidden group-hover:inline-block">LAUNCH APP</span>
+                </div>
+                
+              </div>
+            </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+
   )
 }
 
