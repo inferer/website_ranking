@@ -4,8 +4,9 @@ import { Table, TableHead, TableBody, TableHeadCell, TableRow, TableCell } from 
 import LazyImage from '../../../components/LazyImage';
 import { useRankingStore } from '@/state'
 import { useEffect, useMemo } from 'react';
-import { formatName, formatNumber, formatAddress } from '@/utils';
+import { formatName, formatNumber, formatAddress, openBrowser } from '@/utils';
 import { useRouter } from 'next/router';
+import { redditUserUrl } from '@/config';
 
 const TopAccounts = () => {
   const router = useRouter()
@@ -63,13 +64,18 @@ const TopAccounts = () => {
                         </div>
                         <div className='text-[16px] cursor-pointer'>{formatAddress(item.holder_address)}</div>
                         {
-                          item.user_name && <LazyImage src="/ranking/bridge.png" className="w-5 h-5 ml-2 cursor-pointer" />
+                          item.user_name && <LazyImage src="/ranking/bridge.png" className="w-5 h-5 ml-2 cursor-pointer" 
+                            onClick={e => {
+                              e.stopPropagation()
+                              openBrowser(redditUserUrl + item.user_name|| '')
+                            }}
+                          />
                         }
                         
                       </TableCell>
                       <TableCell className="w-[189px] ">
                         {
-                          item.url_list && item.url_list.length > 0 ? item.url_list.map((item, index) => {
+                          item.url_list && item.url_list.length > 0 ? item.url_list.slice(0,3).map((item, index) => {
                             return (  
                               <div key={index} className='w-[20px] h-[26px] mr-2 flex items-center justify-center relative img-wrap '>
                                 <LazyImage src={item} className="" />
@@ -95,7 +101,7 @@ const TopAccounts = () => {
                         </div> */}
 
                         {
-                          item.NFT_counts > 3 ? '+' + (item.NFT_counts - 3) : null
+                          item.url_list.length > 3 ? '+' + (item.url_list.length - 3) : null
                         }
                       </TableCell>
                       <TableCell className="w-[156px] ">{item.birth_on}</TableCell>

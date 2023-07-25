@@ -171,7 +171,12 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     }
     const res1 = await fetcher('/api/web/ranking/getTop50ActiveUsers')
     if (res1.status === 200) {
-      set({ topActiveUserList: res1.data })
+      set({ topActiveUserList: res1.data.map((item: any) => {
+        return {
+          ...item,
+          url_list: item.url_list ? item.url_list.slice(1) : []
+        }
+      }) })
     }
     return
     const res = await fetcher('/api/web/ranking/getTopActiveUsers', { pageSize })
