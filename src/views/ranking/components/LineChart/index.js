@@ -119,6 +119,7 @@ const LineChartT = ({
 export const LineChartS = ({
   lineData,
   lineColor,
+  areaColor,
   id
 }) => {
 
@@ -167,14 +168,41 @@ export const LineChartS = ({
           lineStyle: {
             width: 2
           },
+          areaStyle: {
+            opacity: 1,
+            color: areaColor === '1' ? new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0.2,
+                color: 'rgba(103, 154, 255, 0.4)'
+              },
+              {
+                offset: 1,
+                color: 'rgba(103, 154, 255, 0)'
+              }
+            ]) : new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0.2,
+                color: 'rgba(255, 83, 46, 0.4)'
+              },
+              {
+                offset: 1,
+                color: 'rgba(255, 83, 46, 0)'
+              }
+            ])
+          }
         }
       ]
     };
     if (id && lineData.length > 0) {
+
+      const minValue = Math.min(...lineData)
+      const min = minValue - minValue / 5
       var chartDom = document.getElementById(id);
       if (chartDom) {
+        option.yAxis.min = min
         option.series[0].data = lineData
         option.series[0].color = lineColor || '#679AFF'
+        // option.series[0].areaStyle = areaStyle || {}
         !chartInsRef.current && (chartInsRef.current = echarts.init(chartDom));
         option && chartInsRef.current.setOption({
           ...option,
@@ -189,7 +217,7 @@ export const LineChartS = ({
       ref={chartWrapRef}
       className='chart-wrap relative'
     >
-      <div id={id} className="" style={{ height: 36 }}></div>
+      <div id={id} className="" style={{ height: 64 }}></div>
       
     </div>
   )

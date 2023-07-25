@@ -79,6 +79,7 @@ const TopPopullarColl = () => {
                         <div className='w-[130px]'>
                           <LineChartS 
                             id={"toppopullarcollvolumn" + key}
+                            areaColor="1"
                             lineData={item.volumeChartData.volumeData} 
                           />
                         </div>  

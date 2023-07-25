@@ -4,6 +4,7 @@ import LazyImage from '../../../components/LazyImage';
 import LineChartS from './LineChart';
 import { TTitle } from './VolumeData';
 import { formatName, formatNumber } from '@/utils';
+import * as echarts from 'echarts';
 
 
 const PriceData = ({
@@ -15,7 +16,7 @@ const PriceData = ({
     <RankWrap className='sm:min-h-[300px] mt-[120px]'>
       <LazyImage src='/ranking/circle5.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
       <LazyImage src='/addressan/circle2.png' className='w-[138px] h-[138px] absolute right-[145px] -top-[81px]' />
-      <TTitle text="Price" tips="NFT transaction price in last 6 months" />
+      <TTitle text="Price" tips="NFT transaction price in last 9 months" />
       <div className='text-[#3F4664] flex items-baseline mt-4'>
         <span className='font-fbold text-[32px]'>
           {/* {formatNumber(Number(priceChartData.total / priceChartData.xdata.length))} */}
@@ -41,6 +42,19 @@ const PriceData = ({
                 lineStyle: {
                   width: 2
                 },
+                areaStyle: {
+                  opacity: 1,
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      offset: 0.2,
+                      color: 'rgba(255, 83, 46, 0.4)'
+                    },
+                    {
+                      offset: 1,
+                      color: 'rgba(255, 83, 46, 0)'
+                    }
+                  ])
+                }
               }
             ]
           }}

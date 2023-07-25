@@ -68,7 +68,7 @@ const MenuWhite = () => {
             </div>
             
             <div className='text-base font-fbold text-[#3A3A3A] flex space-x-9 items-center'>
-              <MenuItem className="cursor-pointer hover:text-[#44488F]" onClick={()=>{
+              {/* <MenuItem className="cursor-pointer hover:text-[#44488F]" onClick={()=>{
                 router.push('/community')
               }}>
                   COMMUNITY
@@ -77,7 +77,7 @@ const MenuWhite = () => {
                 router.push('/faq')
               }}>
                   FAQ
-              </MenuItem>
+              </MenuItem> */}
               <div className='launch-btn p-[2px] cursor-pointer ' 
                 onClick={()=>{
                     // router.push('/app')

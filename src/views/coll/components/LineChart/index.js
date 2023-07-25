@@ -20,10 +20,10 @@ const LineChartT = ({
   useEffect(() => {
     option = {
       grid: {
-        left: -80,
+        left: -30,
         top: 10,
         bottom: 30,
-        right: -80
+        right: -30
       },
       xAxis: {
         type: 'category',
@@ -53,10 +53,13 @@ const LineChartT = ({
     if (id && lineData.series.length > 0) {
       var chartDom = document.getElementById(id);
       if (chartDom) {
+        const minValue = Math.min(...lineData.series)
+        const min = minValue - minValue / 5
         !chartInsRef.current && (chartInsRef.current = echarts.init(chartDom));
         option && chartInsRef.current.setOption({
           ...option,
           ...{ xAxis: { ...option.xAxis, data: lineData?.xAxis?.data || ['Jan', 'Fab', 'Mar', 'Apr', 'May', 'Jun'] } },
+          ...{ yAxis: { ...option.yAxis, min: 0}},
           series: lineData.series
         });
         // myChart.getZr().on('mouseover', (params) => {

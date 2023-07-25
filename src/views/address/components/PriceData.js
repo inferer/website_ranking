@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import RankWrap from '../../ranking/components/RankWrap';
 import LazyImage from '../../../components/LazyImage';
 import LineChartS from './LineChart';
-import { TTitle } from '../../coll/components/VolumeData'
+import { TTitle } from '../../coll/components/VolumeData';
+import * as echarts from 'echarts';
 
 
 const PriceData = ({
@@ -37,6 +38,19 @@ const PriceData = ({
                 lineStyle: {
                   width: 2
                 },
+                areaStyle: {
+                  opacity: 1,
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      offset: 0.2,
+                      color: 'rgba(255, 83, 46, 0.4)'
+                    },
+                    {
+                      offset: 1,
+                      color: 'rgba(255, 83, 46, 0)'
+                    }
+                  ])
+                }
               }
             ]
           }}

@@ -85,6 +85,7 @@ const TopPriceColl = () => {
                         <div className='w-[130px]'>
                           <LineChartS 
                             id={"toppricecollvolumn" + key}
+                            areaColor="1"
                             lineData={item.volumeChartData.volumeData} 
                           />
                         </div>  
@@ -94,7 +95,9 @@ const TopPriceColl = () => {
                           <LineChartS 
                             id={"toppricecollprice" + key}
                             lineColor="#FF532E"
+                            areaColor="2"
                             lineData={item.priceChartData.volumeData} 
+                           
                           />
                         </div>  
                       </TableCell>

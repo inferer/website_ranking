@@ -43,7 +43,7 @@ const LineChartT = ({
       yAxis: {
         type: 'value',
         show: false,
-        // min: 120,
+        // min: 0,
         // max: 250
       },
       series: [
@@ -54,6 +54,8 @@ const LineChartT = ({
       var chartDom = document.getElementById(id);
       if (chartDom) {
         !chartInsRef.current && (chartInsRef.current = echarts.init(chartDom));
+        const minValue = Math.min(...lineData.series)
+        const perValue = minValue - minValue / 5
         option && chartInsRef.current.setOption({
           ...option,
           ...{ xAxis: { ...option.xAxis, data: lineData?.xAxis?.data || ['Jan', 'Fab', 'Mar', 'Apr', 'May', 'Jun'] } },
