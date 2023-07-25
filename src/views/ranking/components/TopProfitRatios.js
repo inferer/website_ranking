@@ -69,6 +69,13 @@ const TopProfitRatios = () => {
                       </TableCell>
                       <TableCell className="w-[189px] ">
                         {
+                          item.url_list && item.url_list.length > 0 ? item.url_list.map((item, index) => {
+                            return (  
+                              <div key={index} className='w-[20px] h-[26px] mr-2 flex items-center justify-center relative img-wrap '>
+                                <LazyImage src={item} className="" />
+                              </div>
+                            )
+                          }) :
                           new Array(item.NFT_counts > 3 ? 3: item.NFT_counts).fill('').map((n, index) => {
                             return (
                               <div key={index} className='w-[20px] h-[26px] mr-2 flex items-center justify-center relative img-wrap '>

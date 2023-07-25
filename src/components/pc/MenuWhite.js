@@ -57,14 +57,18 @@ const MenuWhite = () => {
         `}>
           <div className='w-full max-w-[1200px] flex justify-between items-center'>
             <div className="flex items-center cursor-pointer"
-              onClick={e => {
-                router.push('/')
-              }}
+              
             >
               <img src='/logo.png' className='w-8 h-8' 
-                
+                onClick={e => {
+                  window.open('https://www.inferer.xyz/', '_blank')
+                }}
               />
-              <span className="num-text1 text-[24px] font-fmedium ml-5" style={{ fontFamily: 'Poppins-Medium'}}>Ranking</span>
+              <span className="num-text1 text-[24px] font-fmedium ml-5" style={{ fontFamily: 'Poppins-Medium'}}
+                onClick={e => {
+                  router.push('/')
+                }}
+              >Ranking</span>
             </div>
             
             <div className='text-base font-fbold text-[#3A3A3A] flex space-x-9 items-center'>

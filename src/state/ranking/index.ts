@@ -127,7 +127,15 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     }
     const res1 = await fetcher('/api/web/ranking/getTop50Accounts')
     if (res1.status === 200) {
-      set({ topAccountList: res1.data })
+      set({ 
+        topAccountList: res1.data.map((item: any) => {
+          return {
+            ...item,
+            url_list: item.url_list ? item.url_list.slice(1) : []
+          }
+        })
+      
+      })
     }
     return
     const res = await fetcher('/api/web/ranking/getTopAccounts', { pageSize })
@@ -200,7 +208,15 @@ const useRankingStore = create<RankingState>()((set, get) => ({
     }
     const res1 = await fetcher('/api/web/ranking/getTop50ProfitRatios')
     if (res1.status === 200) {
-      set({ topProfitRatiosList: res1.data })
+      set({ 
+        topProfitRatiosList: res1.data.map((item: any) => {
+          return {
+            ...item,
+            url_list: item.url_list ? item.url_list.slice(1) : []
+          }
+        })
+      
+      })
     }
     return
     const res = await fetcher('/api/web/ranking/getTopProfitRatios', { pageSize })
