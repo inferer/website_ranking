@@ -24,7 +24,7 @@ const RedditTitle2 = () => {
         title = '/ranking/top_profit.png'
       }
       if (router.query.ranking === 'price-popullar') {
-        title = '/ranking/top_price.png'
+        title = '/ranking/top_price2.png'
       }
     }
 
@@ -34,15 +34,20 @@ const RedditTitle2 = () => {
   return (
     <div className="flex justify-center h-[231px] relative">
       <div className=" flex items-center justify-center flex-col relative w-[1200px]">
-        <img src={title} className="w-[807px] h-[54px]" />
-        {
-          router.query.ranking === 'price-popullar' && <img src="/ranking/top_popullar.png" className="w-[807px] h-[54px]" />
-        }
         
-        {/* <LazyImage src="/ranking/t_left2.png" className="w-[104px] h-[14px] mr-[10px]" />
-        <LazyImage src="/ranking/reddit_logo2.png" className="w-[40px] h-[40px] mr-3" /> */}
-        {/* <div className=" font-fbold text-[36px] reddit-title2">{ title }</div> */}
-        {/* <LazyImage src="/ranking/t_right2.png" className="w-[104px] h-[14px] ml-[10px]" /> */}
+        {
+          router.query.ranking === 'price-popullar' ? 
+            <div className="w-full flex space-x-6">
+              <div className="w-full flex justify-center">
+                <img src={title} className="w-[447px] h-auto " />
+              </div>
+              <div className="w-full flex justify-center">
+                <img src="/ranking/top_popullar2.png" className="w-[520px] relative z-50 left-2 " />
+              </div>
+              
+            </div> : 
+            <img src={title} className="w-[807px] h-[54px]" />
+        }
         <LazyImage src="/ranking/circle2.png" className="w-[170px] h-[170px] absolute top-[0px] right-[0px]" />
         <LazyImage src="/ranking/circle3.png" className="w-[50px] h-[50px] absolute top-[140px] -left-[170px]" />
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import MenuWhite from '../../components/pc/MenuWhite';
-import RedditTitle from './components/RedditTitle';
+import RedditTitle from './components/RedditTitle3';
 import TopPriceColl from './components/TopPriceColl';
 import TopPopullarColl from './components/TopPopullarColl';
 import TopAccounts from './components/TopAccounts';
@@ -15,9 +15,12 @@ const Ranking = () => {
   return (
     <div  className=" min-h-screen">
       <MenuWhite />
-      <div className="  pt-[104px] ranking-bg ">
+      <div className=" pt-[104px] ranking-bg ">
         <div className="w-[1200px] mx-auto pb-[145px]">
           <RedditTitle />
+          <div>
+            <img src="/ranking/banner.png" className="w-full mb-[103px] " />
+          </div>
           <div className="mb-[120px]">
             <div className="mb-[120px]">
               <TopPriceColl />

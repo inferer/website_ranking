@@ -24,9 +24,18 @@ const HolderInfo = ({
   const ownerInfo = useMemo(() => {
     return itemData.ownerInfo || {}
   }, [itemData])
+  const ownerNftList = useMemo(() => {
+    return itemData.ownerInfo?.url_list?.filter(item => item) || []
+  }, [itemData])
   const infererLabels = useMemo(() => {
     return itemData.infererLabels || []
   }, [itemData])
+
+  const userImg = useMemo(() => {
+    if (ownerInfo.img_url) return ownerInfo.img_url
+    if (ownerNftList && ownerNftList[0]) return ownerNftList[0]
+    return "/addressan/nft-asset.png"
+  }, [ownerInfo])
 
   return (
     <div className="mt-[120px] holder_bg h-[640px] rounded-xl flex relative">
@@ -34,7 +43,7 @@ const HolderInfo = ({
       <div className="flex-1">
         <div className="flex mt-[42px] mb-5 justify-center">
           <div className="relative w-[132px] h-[174px] flex items-center justify-center">
-            <LazyImage src={ownerInfo?.img_url || "/addressan/nft-asset.png"} className=" max-w-full max-h-full w-auto h-auto" />
+            <LazyImage src={userImg} className=" max-w-full max-h-full w-auto h-auto" />
             <LazyImage src="/addressan/avatar_bg.png" className="w-[132px] h-[174px] absolute left-0 top-0" />
           </div>
         </div>
@@ -74,7 +83,7 @@ const HolderInfo = ({
             <TextMain>Reddit</TextMain>
           </div>
           <div className="mt-2 flex items-center">
-            <TextSub>Hold {ownerInfo?.nft_nums || 0} Reddit NFTs</TextSub>
+            <TextSub>Hold {ownerNftList.length || 0} Reddit NFTs</TextSub>
           </div>
         </div>
         <div className="mt-[22px]">
