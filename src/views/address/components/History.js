@@ -54,7 +54,8 @@ const History = ({
                         </div>
                       </TableCell>
                       <TableCell className="w-[254px] justify-end">
-                        <div className='num-text3 text-[20px]'>${item.price}</div>
+                        <img src='/ranking/eth.png' className='w-5 h-5 mr-1' />
+                        <div className='num-text3 text-[20px]'>{item.price}</div>
                       </TableCell>
                     </TableRow>
             })
