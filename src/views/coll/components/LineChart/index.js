@@ -66,7 +66,6 @@ const LineChartT = ({
         //   console.log(params)
         // })
         chartInsRef.current.on('mouseover', (params) => {
-          console.log(params.event?.event)
           const originEvent = params.event?.event
           setEventPos({ clientX: originEvent.clientX, clientY: originEvent.clientY })
           setdataIndex(params.dataIndex)

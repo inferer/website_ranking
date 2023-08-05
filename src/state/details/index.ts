@@ -18,6 +18,9 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
     infererAnalysis: {},
     volumeChartData: {},
     priceChartData: {},
+    floorPriceChartData: {},
+    medianPriceChartData: {},
+    maxPriceChartData: {},
     holderPrecent: {},
     infererLabels: []
   },
@@ -31,6 +34,9 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
     series_creator: '',
     volumeMonthHistory: [],
     priceMonthHistory: [],
+    floorPriceChartData: {},
+    medianPriceChartData: {},
+    maxPriceChartData: {},
     infererAnalysis: {},
     volumeChartData: {},
     priceChartData: {}
@@ -71,6 +77,42 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
           });
           
         }
+        const floorPriceMonthHistory = item.floorPriceMonthHistory
+        const floorPiceXdata: any[] = []
+        const floorPriceVolumeData: any[] = []
+        let floorTotal = 0
+        if (floorPriceMonthHistory && floorPriceMonthHistory.length > 0) {
+          floorPriceMonthHistory.slice(-9).forEach((element: any) => {
+            floorPiceXdata.push(num2Month(element.transaction_month.slice(-2)))
+            const volume = Number((element.price_avg).toFixed(1))
+            floorPriceVolumeData.push(volume)
+            floorTotal += volume
+          });
+        }
+        const medianPriceMonthHistory = item.medianPriceMonthHistory
+        const medianPiceXdata: any[] = []
+        const medianPriceVolumeData: any[] = []
+        let medianTotal = 0
+        if (medianPriceMonthHistory && medianPriceMonthHistory.length > 0) {
+          medianPriceMonthHistory.slice(-9).forEach((element: any) => {
+            medianPiceXdata.push(num2Month(element.transaction_month.slice(-2)))
+            const volume = Number((element.price_avg).toFixed(1))
+            medianPriceVolumeData.push(volume)
+            medianTotal += volume
+          });
+        }
+        const maxPriceMonthHistory = item.maxPriceMonthHistory
+        const maxPiceXdata: any[] = []
+        const maxPriceVolumeData: any[] = []
+        let maxTotal = 0
+        if (maxPriceMonthHistory && maxPriceMonthHistory.length > 0) {
+          maxPriceMonthHistory.slice(-9).forEach((element: any) => {
+            maxPiceXdata.push(num2Month(element.transaction_month.slice(-2)))
+            const volume = Number((element.price_avg).toFixed(1))
+            maxPriceVolumeData.push(volume)
+            maxTotal += volume
+          });
+        }
         set({ topPriceCollItem: {
             ...item,
             volumeChartData: {
@@ -82,6 +124,24 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
               xdata: xdata2,
               volumeData: volumeData2,
               total: Number(total2).toFixed(3)
+            },
+            floorPriceChartData: {
+              xdata: floorPiceXdata,
+              volumeData: floorPriceVolumeData,
+              total: Number(floorTotal).toFixed(3),
+              lastPrice: floorPriceVolumeData[floorPriceVolumeData.length - 1]
+            },
+            medianPriceChartData: {
+              xdata: medianPiceXdata,
+              volumeData: medianPriceVolumeData,
+              total: Number(medianTotal).toFixed(3),
+              lastPrice: medianPriceVolumeData[medianPriceVolumeData.length - 1]
+            },
+            maxPriceChartData: {
+              xdata: maxPiceXdata,
+              volumeData: maxPriceVolumeData,
+              total: Number(maxTotal).toFixed(3),
+              lastPrice: maxPriceVolumeData[maxPriceVolumeData.length - 1]
             }
         } })
       }
@@ -125,6 +185,42 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
           });
           
         }
+        const floorPriceMonthHistory = item.floorPriceMonthHistory
+        const floorPiceXdata: any[] = []
+        const floorPriceVolumeData: any[] = []
+        let floorTotal = 0
+        if (floorPriceMonthHistory && floorPriceMonthHistory.length > 0) {
+          floorPriceMonthHistory.slice(-9).forEach((element: any) => {
+            floorPiceXdata.push(num2Month(element.transaction_month.slice(-2)))
+            const volume = Number((element.price_avg).toFixed(1))
+            floorPriceVolumeData.push(volume)
+            floorTotal += volume
+          });
+        }
+        const medianPriceMonthHistory = item.medianPriceMonthHistory
+        const medianPiceXdata: any[] = []
+        const medianPriceVolumeData: any[] = []
+        let medianTotal = 0
+        if (medianPriceMonthHistory && medianPriceMonthHistory.length > 0) {
+          medianPriceMonthHistory.slice(-9).forEach((element: any) => {
+            medianPiceXdata.push(num2Month(element.transaction_month.slice(-2)))
+            const volume = Number((element.price_avg).toFixed(1))
+            medianPriceVolumeData.push(volume)
+            medianTotal += volume
+          });
+        }
+        const maxPriceMonthHistory = item.maxPriceMonthHistory
+        const maxPiceXdata: any[] = []
+        const maxPriceVolumeData: any[] = []
+        let maxTotal = 0
+        if (maxPriceMonthHistory && maxPriceMonthHistory.length > 0) {
+          maxPriceMonthHistory.slice(-9).forEach((element: any) => {
+            maxPiceXdata.push(num2Month(element.transaction_month.slice(-2)))
+            const volume = Number((element.price_avg).toFixed(1))
+            maxPriceVolumeData.push(volume)
+            maxTotal += volume
+          });
+        }
         set({ topPopullarCollItem: {
             ...item,
             volumeChartData: {
@@ -136,6 +232,24 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
               xdata: xdata2,
               volumeData: volumeData2,
               total: Number(total2).toFixed(3)
+            },
+            floorPriceChartData: {
+              xdata: floorPiceXdata,
+              volumeData: floorPriceVolumeData,
+              total: Number(floorTotal).toFixed(3),
+              lastPrice: floorPriceVolumeData[floorPriceVolumeData.length - 1]
+            },
+            medianPriceChartData: {
+              xdata: medianPiceXdata,
+              volumeData: medianPriceVolumeData,
+              total: Number(medianTotal).toFixed(3),
+              lastPrice: medianPriceVolumeData[medianPriceVolumeData.length - 1]
+            },
+            maxPriceChartData: {
+              xdata: maxPiceXdata,
+              volumeData: maxPriceVolumeData,
+              total: Number(maxTotal).toFixed(3),
+              lastPrice: maxPriceVolumeData[maxPriceVolumeData.length - 1]
             }
         } })
       }

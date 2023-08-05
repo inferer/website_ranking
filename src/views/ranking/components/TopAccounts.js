@@ -44,13 +44,14 @@ const TopAccounts = () => {
       }
       <Table>
         <TableHead>
-          <TableHeadCell className="flex-1"><div className='pl-[36px]'>Address</div></TableHeadCell>
-          <TableHeadCell className="w-[189px] ">Reddit Avatars</TableHeadCell>
-          <TableHeadCell className="w-[156px]">Birth On</TableHeadCell>
-          <TableHeadCell className="w-[156px]">Active Since</TableHeadCell>
-          <TableHeadCell className="w-[133px] justify-center">Tx Count</TableHeadCell>
+          <TableHeadCell className="flex-1"><div className='pl-[36px]'>Account</div></TableHeadCell>
+          <TableHeadCell className="w-[168px] ">Address</TableHeadCell>
+          <TableHeadCell className="w-[156px] ">Reddit Avatars</TableHeadCell>
+          <TableHeadCell className="w-[116px]">Birth On</TableHeadCell>
+          <TableHeadCell className="w-[138px]">Active Since</TableHeadCell>
+          <TableHeadCell className="w-[112px] justify-center">Tx Count</TableHeadCell>
           <TableHeadCell className="w-[133px] justify-center">Inferer Score</TableHeadCell>
-          <TableHeadCell className="w-[133px] justify-end">Price</TableHeadCell>
+          <TableHeadCell className="w-[103px] justify-end">Price</TableHeadCell>
         </TableHead>
         <TableBody>
           {
@@ -62,18 +63,18 @@ const TopAccounts = () => {
                           <LazyImage src={item.img_url || "/ranking/demo2.png"} className=" shrink-0" />
                           <div className="img-bg"></div>
                         </div>
-                        <div className='text-[16px] cursor-pointer'>{formatAddress(item.holder_address)}</div>
-                        {
-                          item.user_name && <LazyImage src="/ranking/bridge.png" className="w-5 h-5 ml-2 cursor-pointer" 
-                            onClick={e => {
-                              e.stopPropagation()
-                              openBrowser(redditUserUrl + item.user_name|| '')
-                            }}
-                          />
-                        }
+                        <div className='text-[16px] cursor-pointer w-[110px] text-ellipsis'
+                          onClick={e => {
+                            e.stopPropagation()
+                            openBrowser(redditUserUrl + item.user_name|| '')
+                          }}
+                        >{item.user_name}</div>
                         
                       </TableCell>
-                      <TableCell className="w-[189px] ">
+                      <TableCell className="w-[168px]">
+                        <div className='text-[16px] font-dbold'>{formatAddress(item.holder_address)}</div>
+                      </TableCell>
+                      <TableCell className="w-[156px] ">
                         {
                           item.url_list && item.url_list.length > 0 ? item.url_list.slice(0,3).map((item, index) => {
                             return (  
@@ -104,13 +105,13 @@ const TopAccounts = () => {
                           item.url_list.length > 3 ? '+' + (item.url_list.length - 3) : null
                         }
                       </TableCell>
-                      <TableCell className="w-[156px] ">{item.birth_on}</TableCell>
-                      <TableCell className="w-[156px] ">{item.active_since}</TableCell>
-                      <TableCell className="w-[133px] justify-center ">{item.tx_count}</TableCell>
+                      <TableCell className="w-[116px] ">{item.birth_on}</TableCell>
+                      <TableCell className="w-[138px] ">{item.active_since}</TableCell>
+                      <TableCell className="w-[112px] justify-center ">{item.tx_count}</TableCell>
                       <TableCell className="w-[133px] justify-center">
                         <div className=' num-text1 text-[20px]'>{Number(item.infer_score ?? 0).toFixed(1)}</div>
                       </TableCell>
-                      <TableCell className="w-[133px] justify-end">
+                      <TableCell className="w-[103px] justify-end">
                         <div className='num-text3 text-[20px]'>${formatNumber(Number(item.volume))}</div>
                       </TableCell>
                     </TableRow>

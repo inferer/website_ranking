@@ -174,9 +174,22 @@ const DetailsDataRight = ({
         <div className="flex justify-end mt-[58px]">
           {
             router.pathname === '/top-price-collection/[...address]' && 
-            <div className="flex items-baseline">
-              <div className="num-text1 text-[102px] font-fbold leading-[110%]">{Number(item.price).toFixed(2)}</div>
-              <div className="num-text1 text-[56px] font-fbold ml-3">$</div>
+            <div className="flex flex-col items-end">
+              <div className="flex items-baseline">
+                <div className="num-text1 text-[56px] font-fbold mr-2">$</div>
+                <div className="num-text1 text-[102px] font-fbold leading-[110%]">{Number(item.price || 0).toFixed(2)}</div>
+              </div>
+              <div className="w-[272px] h-[67px] rounded-[5px] ceiling-floor-bg flex justify-between items-center px-5 mt-5">
+                <div className="text-right">
+                  <div className="text-[20px] text-[rgba(63,70,100,1)] font-fbold">${Number(item.max_price || 0).toFixed(2)}</div>
+                  <div className="text-[16px] text-[rgba(63,70,100,0.6)] font-fmedium">ceiling price</div>
+                </div>
+                <img src="/addressan/h-line.png" className="w-[2px] h-[39px]" />
+                <div className="text-right">
+                  <div className="text-[20px] text-[rgba(63,70,100,1)] font-fbold">${Number(item.min_price || 0).toFixed(2)}</div>
+                  <div className="text-[16px] text-[rgba(63,70,100,0.6)] font-fmedium">floor price</div>
+                </div>
+              </div>
             </div>
           }
           {
@@ -196,7 +209,7 @@ const DetailsDataRight = ({
           {
             router.pathname === "/top-price/[...address]" &&
             <>
-              <div className="num-text1 text-[102px] font-fbold leading-[110%]">{formatNumber(Number(itemData.USD_price))}</div>
+              <div className="num-text1 text-[102px] font-fbold leading-[110%]">{formatNumber(Number(itemData.USD_price || 0))}</div>
               <div className="num-text1 text-[56px] font-fbold ml-3">$</div>
             </>
           }
@@ -210,13 +223,15 @@ const DetailsDataRight = ({
           </div>
         </div>
       }
-      
-      <div className="flex justify-end mt-[15px]">
+      {
+        router.pathname !== '/top-price-collection/[...address]' &&  <div className="flex justify-end mt-[15px]">
         <div className="flex items-center">
           <StarList score={starNums} />
         </div>
       </div>
-      <div className="flex justify-end mt-[120px]">
+      }
+     
+      <div className={`flex justify-end ${isColl && router.pathname === '/top-price-collection/[...address]' ? ' mt-[71px]' : ' mt-[120px]'}`}>
         <div className="flex items-center">
           <CollectIcon
             value={isFav} 

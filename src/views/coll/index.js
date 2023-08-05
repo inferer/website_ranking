@@ -52,16 +52,15 @@ const AddressAn = () => {
           <DetailsData 
             itemData={itemData}
           />
-          <VolumeData 
+          <PriceData 
             itemData={itemData}
           />
-          <PriceData 
+          <VolumeData 
             itemData={itemData}
           />
           <InferAn 
             itemData={itemData}
           />
-
           <div className="mt-[120px] flex space-x-6">
             <HolderDist 
               itemData={itemData}

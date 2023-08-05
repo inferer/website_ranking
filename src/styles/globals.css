@@ -446,3 +446,7 @@ body {
 
   text-overflow: ellipsis;
 }
+
+.ceiling-floor-bg{
+  background: linear-gradient(127deg, rgba(53, 85, 255, 0.05) 15.65%, rgba(161, 87, 255, 0.05) 77.85%);
+}
