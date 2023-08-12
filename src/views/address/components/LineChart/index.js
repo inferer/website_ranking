@@ -20,10 +20,10 @@ const LineChartT = ({
   useEffect(() => {
     option = {
       grid: {
-        left: -50,
+        left: 0,
         top: 10,
         bottom: 30,
-        right: -50
+        right: 0
       },
       xAxis: {
         type: 'category',
@@ -95,7 +95,7 @@ const LineChartT = ({
       ref={chartWrapRef}
       className='chart-wrap relative'
     >
-      <div id={id} className="" style={{ height: 155 }}></div>
+      <div id={id} className="" style={{ height: 222 }}></div>
       <div
         ref={chartTipRef}
         onMouseLeave={e => {

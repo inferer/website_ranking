@@ -287,10 +287,9 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
       const item = res.data
       
       const priceMonthHistory = item.priceMonthHistory
-      const xdata2: any[] = []
+      let xdata2: any[] = []
       const volumeData2: any[] = []
       let total2 = 0
-      console.log(priceMonthHistory)
       if (priceMonthHistory && priceMonthHistory.length > 0) {
         priceMonthHistory.forEach((element: any) => {
           xdata2.push(num2Month(element.transaction_month.slice(-2)))
@@ -300,13 +299,44 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
         });
         
       }
+      const volumeMonthHistory = item.volumeMonthHistory
+      const xdata: any[] = []
+      const volumeData: any[] = []
+      let total = 0
+      if (volumeMonthHistory && volumeMonthHistory.length > 0) {
+        volumeMonthHistory.reverse().slice(-9).forEach((element: any) => {
+          xdata.push(num2Month(element.transaction_month.slice(-2)))
+          const volume = Number((element.volume).toFixed(1))
+          volumeData.push(volume)
+          total += volume
+        });
+      }
+      const priceVolume = item.priceVolume
+      if (priceVolume && priceVolume.length > 0) {
+        priceVolume.reverse().slice(-9).forEach((element: any) => {
+          xdata.push(num2Month(element.transaction_month.slice(-2)))
+          const volume = Number((element.volume).toFixed(1))
+          const price = Number((element.price_avg).toFixed(1))
+          volumeData.push(volume)
+          total += volume
+          volumeData2.push(price)
+          total2 += price
+        });
+      }
+      xdata2 = xdata
+
       set({ topPriceItem: {
           ...item,
           priceChartData: {
             xdata: xdata2,
             volumeData: volumeData2,
             total: Number(total2).toFixed(3)
-          }
+          },
+          volumeChartData: {
+            xdata,
+            volumeData,
+            total
+          },
       } })
       // 再异步获取inferer评分信息
       if (item.ownerInfo && item.ownerInfo.holder_address) {
@@ -331,6 +361,11 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
               xdata: xdata2,
               volumeData: volumeData2,
               total: Number(total2).toFixed(3)
+            },
+            volumeChartData: {
+              xdata,
+              volumeData,
+              total
             },
             analysisData: res2.result || {}
           } })
@@ -379,13 +414,31 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
         });
         
       }
+      const volumeMonthHistory = item.volumeMonthHistory
+      const xdata: any[] = []
+      const volumeData: any[] = []
+      let total = 0
+      if (volumeMonthHistory && volumeMonthHistory.length > 0) {
+        volumeMonthHistory.reverse().slice(-9).forEach((element: any) => {
+          xdata.push(num2Month(element.transaction_month.slice(-2)))
+          const volume = Number((element.volume).toFixed(1))
+          volumeData.push(volume)
+          total += volume
+        });
+        
+      }
       set({ topPopullarItem: {
           ...item,
           priceChartData: {
             xdata: xdata2,
             volumeData: volumeData2,
             total: Number(total2).toFixed(3)
-          }
+          },
+          volumeChartData: {
+            xdata,
+            volumeData,
+            total
+          },
       } })
       // 再异步获取inferer评分信息
       if (item.ownerInfo && item.ownerInfo.holder_address) {
@@ -410,6 +463,11 @@ const useDetailsStore = create<RankingDetailsState>()((set) => ({
               xdata: xdata2,
               volumeData: volumeData2,
               total: Number(total2).toFixed(3)
+            },
+            volumeChartData: {
+              xdata,
+              volumeData,
+              total
             },
             analysisData: res2.result || {}
           } })
