@@ -5,7 +5,7 @@ import LazyImage from '../../../components/LazyImage';
 import { LineChartS } from './LineChart';
 import { useRankingStore, useDetailsStore } from '@/state'
 import { useEffect, useMemo } from 'react';
-import { formatName, formatNumber } from '@/utils';
+import { formatName, toIpfsUrl } from '@/utils';
 import { useRouter } from 'next/router';
 
 const TopPopullar = () => {
@@ -66,7 +66,7 @@ const TopPopullar = () => {
                       <TableCell className="flex-1">
                         <div className=' font-dbold text-base italic w-9'>{key + 1}</div>
                         <div className='w-[30px] h-[40px] mr-2 flex items-center justify-center relative img-wrap '>
-                          <LazyImage src={item.NFT_img_url || item.NFT_series_img_url || "/ranking/demo.png"} className=" shrink-0" />
+                          <LazyImage src={toIpfsUrl(item.NFT_img_url || item.NFT_series_img_url || "/ranking/demo.png")} className=" shrink-0" />
                         </div>
                         <div>{formatName(item.NFT_name || item.NFT_series_name)}</div>
                       </TableCell>

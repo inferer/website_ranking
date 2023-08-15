@@ -1,6 +1,6 @@
 import useModal from "@/hooks/useModal";
 import LazyImage from "../../../components/LazyImage";
-import { formatName, formatNumber, openBrowser } from '@/utils';
+import { formatName, toIpfsUrl, openBrowser } from '@/utils';
 import { useRouter } from "next/router";
 import WalletModal from "@/components/walletmodal/WalletModal";
 import React, { useCallback, useEffect, useState } from "react";
@@ -155,7 +155,7 @@ const DetailsData = ({
     <div className="top__bg w-[1196px] h-[503px] rounded-[6px] mt-[138px] flex justify-between relative">
       {contextHolder}
       <div className=" absolute w-[88px] h-[118px] border-[4px] border-white rounded-[12px] left-[40px] -top-[60px] overflow-hidden">
-        <LazyImage src={itemData.series_img_url || "/addressan/images/demo.png"} className="w-full h-full" />
+        <LazyImage src={toIpfsUrl(itemData.series_img_url || "/addressan/images/demo.png")} className="w-full h-full" />
       </div>
       <div className="pl-10 w-[570px]">
         <div className="flex items-center mt-[79px]">

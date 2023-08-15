@@ -4,7 +4,7 @@ import { Table, TableHead, TableBody, TableHeadCell, TableRow, TableCell } from 
 import LazyImage from '../../../components/LazyImage';
 import { useRankingStore } from '@/state'
 import { useEffect, useMemo } from 'react';
-import { formatName, formatNumber, formatAddress, openBrowser } from '@/utils';
+import { toIpfsUrl, formatNumber, formatAddress, openBrowser } from '@/utils';
 import { useRouter } from 'next/router';
 import { redditUserUrl } from '@/config';
 
@@ -60,7 +60,7 @@ const TopAccounts = () => {
                       <TableCell className="flex-1">
                         <div className=' font-dbold text-base italic w-9'>{key + 1}</div>
                         <div className='w-[30px] h-[40px] mr-2 flex items-center justify-center relative img-wrap '>
-                          <LazyImage src={item.img_url || "/ranking/demo2.png"} className=" shrink-0" />
+                          <LazyImage src={toIpfsUrl(item.img_url || "/ranking/demo2.png")} className=" shrink-0" />
                           <div className="img-bg"></div>
                         </div>
                         <div className='text-[16px] cursor-pointer w-[110px] text-ellipsis'
@@ -79,7 +79,7 @@ const TopAccounts = () => {
                           item.url_list && item.url_list.length > 0 ? item.url_list.slice(0,3).map((item, index) => {
                             return (  
                               <div key={index} className='w-[20px] h-[26px] mr-2 flex items-center justify-center relative img-wrap '>
-                                <LazyImage src={item} className="" />
+                                <LazyImage src={toIpfsUrl(item)} className="" />
                               </div>
                             )
                           }) :

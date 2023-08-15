@@ -52,3 +52,7 @@ export function transformTime(timestamp: number) {
 export function openBrowser(url: string) {
   window.open(url, '_blank');
 }
+
+export function toIpfsUrl(url: string) {
+  return url.replace('reddit.infura-ipfs.io', 'ipfs.io')
+}

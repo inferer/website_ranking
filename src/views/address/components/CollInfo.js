@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LazyImage from "../../../components/LazyImage";
-import { openBrowser } from '@/utils';
+import { openBrowser, toIpfsUrl } from '@/utils';
 import { redditUserUrl } from '@/config';
 import CopyClipboard from '@/components/CopyClipboard';
 
@@ -13,7 +13,7 @@ const CollInfo = ({
       <div className="flex-1">
         <div className="flex mt-[82px] mb-5 justify-center">
           <div className="relative w-[158px] h-[208px] flex items-center justify-center">
-            <img src={itemData.NFT_series_img_url || "/addressan/images/demo.png"} className=" w-full h-full" />
+            <img src={toIpfsUrl(itemData.NFT_series_img_url || "/addressan/images/demo.png")} className=" w-full h-full" />
             {/* <LazyImage src="/addressan/avatar_bg.png" className="w-[132px] h-[174px] absolute left-0 top-0" /> */}
           </div>
         </div>

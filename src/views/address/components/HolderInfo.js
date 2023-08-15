@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import LazyImage from "../../../components/LazyImage";
 import CopyClipboard from '@/components/CopyClipboard';
-import { openBrowser } from '@/utils';
+import { openBrowser, toIpfsUrl } from '@/utils';
 import { redditUserUrl } from '@/config';
 
 const TextMain = ({ children }) => {
@@ -43,7 +43,7 @@ const HolderInfo = ({
       <div className="flex-1">
         <div className="flex mt-[42px] mb-5 justify-center">
           <div className="relative w-[132px] h-[174px] flex items-center justify-center">
-            <LazyImage src={userImg} className=" max-w-full max-h-full w-auto h-auto" />
+            <LazyImage src={toIpfsUrl(userImg)} className=" max-w-full max-h-full w-auto h-auto" />
             <LazyImage src="/addressan/avatar_bg.png" className="w-[132px] h-[174px] absolute left-0 top-0" />
           </div>
         </div>

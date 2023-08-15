@@ -5,7 +5,7 @@ import LazyImage from '../../../components/LazyImage';
 import { LineChartS } from './LineChart';
 import { useRankingStore, useDetailsStore } from '@/state'
 import { useEffect, useMemo } from 'react';
-import { formatName, formatNumber } from '@/utils';
+import { formatName, toIpfsUrl } from '@/utils';
 import { useRouter } from 'next/router';
 
 const TopPopullarColl = () => {
@@ -68,7 +68,7 @@ const TopPopullarColl = () => {
                       >
                       <TableCell className="flex-1">
                         <div className=' font-dbold text-base italic w-9'>{key + 1}</div>
-                        <LazyImage src={item.series_img_url || "/ranking/demo.png"} className="w-[30px] h-[40px] mr-2 shrink-0" />
+                        <LazyImage src={toIpfsUrl(item.series_img_url || "/ranking/demo.png")} className="w-[30px] h-[40px] mr-2 shrink-0" />
                         <div>{formatName(item.series_name)}</div>
                       </TableCell>
                       <TableCell className="w-[148px] ">{formatName(item.series_creator)}</TableCell>
