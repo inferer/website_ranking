@@ -19,7 +19,7 @@ const Ranking = () => {
         <div className="w-[1200px] mx-auto pb-[145px]">
           <RedditTitle />
           <div>
-            <img src="/ranking/banner.png" className="w-full mb-[103px] " />
+            <img src="https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/banner.png" className="w-full mb-[103px] " />
           </div>
           <div className="mb-[120px]">
             <div className="mb-[120px]">
