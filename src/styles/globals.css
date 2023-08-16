@@ -108,16 +108,16 @@ body {
 }
 
 .ranking-bg {
-  background-image: url('/ranking/bg3.png');
+  background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/bg3.png?q-sign-algorithm=sha1&q-ak=AKIDE5tVEx6rM7IXBu_3APOZjAEtTLv_30Vz3S8XuSufUsDwvnYuWMlNtKbBLNS6ngf4&q-sign-time=1692195465;1692199065&q-key-time=1692195465;1692199065&q-header-list=host&q-url-param-list=ci-process&q-signature=2fab9e563a8ebeaa4614dbd0b7af15cd002977b5&x-cos-security-token=6bdH5x2ljTSkRgNVTXyGgsu1tiiKSs9a4c50ec37fec9a366a695ac99e0c6ba3dNUDmFHw43ewwAcomMxLIUr9UPy96Ukz65CCJ9Ias3J010zAD-uTwq19Fo-kY7Kz_9mS20SkoFqIULsoX3GiqVB-GYXBKz_SIfoln2RFxfrbnwoX6kD6-AGTGrmjteJE0aKwp7TWcedPCSjBRVcQ920Ib5Wt9sQFbEpc2qcXldTnRED-CskelnIaHajjURrZc&ci-process=originImage');
   background-repeat: no-repeat;
   background-size: cover;
 }
 .addressan-bg {
-  background-image: url('/addressan/bg_nft.png');
+  background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/bg_nft.png?q-sign-algorithm=sha1&q-ak=AKIDo1R0j0v5dOSyRb6LQaWn5kulxT2U8G9ai6BXHOMdcbvUufCPE4G5Tg_-k-oxISxc&q-sign-time=1692194853;1692198453&q-key-time=1692194853;1692198453&q-header-list=host&q-url-param-list=ci-process&q-signature=3f0603729e462e5534bec83726a2cf26e1063751&x-cos-security-token=Kf3IV6P9iQyQm3I05cxTQECP7OMuvLxaa996bb2cc76e6148adf3d3c7081728a169Wx9hEDgmcDjMkTwjW4r1andUrSb8rJn1xthpeI00j9rKGP3V0C0c4h7QXZZYu9bbkmQT6rNbdXDrP1npH8HdNzsW_eLexUCBkxYmbE46cgCAkuKF9vO8gokwnndkZZ1nwJ11N3uusoOdKEK2GeAiQksnc9eBr27V4SIazoUMWy6k3bxsfKn46BVNHFNfvp&ci-process=originImage');
   background-size: cover;
 }
 .addresscoll-bg {
-  background-image: url('/addressan/bg.png');
+  background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/bg.png?q-sign-algorithm=sha1&q-ak=AKIDCg6ZLgUQICuzoJASCH1d1tkZa97_ej_SI3wn32_VHj3uAM-YvSTdJkWaHExzamP7&q-sign-time=1692194864;1692198464&q-key-time=1692194864;1692198464&q-header-list=host&q-url-param-list=ci-process&q-signature=50da10f09b2cbc30fd45c8445120f6695b902cac&x-cos-security-token=6bdH5x2ljTSkRgNVTXyGgsu1tiiKSs9a84497bd51f996c4487ef9320baccc795NUDmFHw43ewwAcomMxLIUtKUsi_Eo9pwTtYWe_9NgapAy0VLCBp4KhWDQehidPE9W57sCFmvdLFQqnd3iQEqVCvaqHYFV6vyI61tkVkK7EsBOl286s_4zchyydnc2YTWmfkmqUMlhir1VrdzL1S3NsAhCBrqJUbHKPlteTdgRfyglM7CjR3e2WXecoWdmv6z&ci-process=originImage');
   background-size: cover;
 }
 .menu-title-white {
@@ -130,16 +130,16 @@ body {
     left: -90px;
   }
   .ranking-bg {
-    background-image: url('/ranking/bg3_1440.png');
+    background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/bg3_1440.png?q-sign-algorithm=sha1&q-ak=AKIDlUO567xNNCDFAKbgMZykyYJ_BFcPA42vpc0FQTU-RMjn0q8J6BODoZxfZxz0RIfo&q-sign-time=1692195192;1692198792&q-key-time=1692195192;1692198792&q-header-list=host&q-url-param-list=ci-process&q-signature=5fa8ba6542f35ebf08eb13c401b910b5dc538774&x-cos-security-token=Kf3IV6P9iQyQm3I05cxTQECP7OMuvLxae41d1320f2b91afb14ea603ffdea1ab669Wx9hEDgmcDjMkTwjW4r9gzUaidi8sBZ0D2dBzwFedt3krKXYh4WsTMpD1gc6koBiJ07vOCh0w4qpnQfLBrCZaVWqlcknBbG7quqbOCdUIVJqXNRyvTxW9iw4XTXn1dgfeylsNkbMGsefhbfGx5yIaTRmmN0ZwibaMGdIFPy6bhUAjnPBO469LVY9Qdw77_&ci-process=originImage');
     background-repeat: no-repeat;
     background-size: cover;
   }
   .addresscoll-bg {
-    background-image: url('/addressan/bg_1440.png');
+    background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/bg_1440.png?q-sign-algorithm=sha1&q-ak=AKIDMb97sRLl5Y1tJf09m5kTSYK6NUd9csrl90xZBXiew0GF0DvpMVt5r0s2BgN95m9q&q-sign-time=1692195203;1692198803&q-key-time=1692195203;1692198803&q-header-list=host&q-url-param-list=ci-process&q-signature=8b9f52a3e9d96a557f7306f7cf0f8c262e94290b&x-cos-security-token=6bdH5x2ljTSkRgNVTXyGgsu1tiiKSs9a9ae1bc0df58e92665f44a88397ce1213NUDmFHw43ewwAcomMxLIUs8c5p0i1oSNpOvERhrjEP2y7nvux8SfVwhINK-P_6fnjoC9uu5YEVQR1_5yAh59OdoZUzqt1emohAMgZdFKVEulO5K4RYcsRWmv2WPzdccbD1W9i5pzHs5oB-0HAxx05ExkFFH3sfMT78wzGYL6glL2oi702PX5bF0Q1QKvXhl2&ci-process=originImage');
     background-size: cover;
   }
   .addressan-bg {
-    background-image: url('/addressan/bg_nft_1440.png');
+    background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/bg_nft_1440.png?q-sign-algorithm=sha1&q-ak=AKIDcRzwyrhtmty21YdeEuAT1Xpx6awPkacRKJjovRGLJ-__m8KXFkTVwKcBhUXmPMyg&q-sign-time=1692195214;1692198814&q-key-time=1692195214;1692198814&q-header-list=host&q-url-param-list=ci-process&q-signature=5f2ba62a9496f2d08d3133dda789e377b446aa10&x-cos-security-token=6bdH5x2ljTSkRgNVTXyGgsu1tiiKSs9a3ea528564068994f7f3417c439f797acNUDmFHw43ewwAcomMxLIUve3wlV6AsR1sntQe_8u8ASLbcbBf6Eao2vx5sdRj8AfFxbXwqmjYkikumL18_hNBIUY2ljzqn0V2FTQx5Rx-Dmv8rM2oUxcR6Y7nBpslNc6rAjbGn-KJWCLkLyVY4e0d2FK_i6x-iJAJsHapaG3Okzywo3CyFsy_Sv0UpezNc4C&ci-process=originImage');
     background-size: cover;
   }
 }
