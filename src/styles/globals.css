@@ -27,37 +27,37 @@ body {
 }
 @font-face {
   font-family: Poppins;
-  /* src: url('/fonts/Poppins-Regular.ttf'); */
+  /* src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/fonts/Poppins-Regular.ttf'); */
   src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/Poppins-Regular.ttf');
 }
 @font-face {
   font-family: Poppins-Medium;
-  /* src: url('/fonts/Poppins-Medium.ttf'); */
+  /* src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/fonts/Poppins-Medium.ttf'); */
   src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/Poppins-Medium.ttf');
 }
 @font-face {
   font-family: Poppins-Bold;
-  /* src: url('/fonts/Poppins-Bold.ttf'); */
+  /* src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/fonts/Poppins-Bold.ttf'); */
   src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/Poppins-Bold.ttf');
 }
 @font-face {
   font-family: Poppins-ExtraLight;
-  /* src: url('/fonts/Poppins-ExtraLight.ttf'); */
+  /* src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/fonts/Poppins-ExtraLight.ttf'); */
   src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/Poppins-ExtraLight.ttf');
 }
 @font-face {
   font-family: DMSans-Bold;
-  /* src: url('/fonts/DMSans-Bold.ttf'); */
+  /* src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/fonts/DMSans-Bold.ttf'); */
   src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/DMSans-Bold.ttf');
 }
 @font-face {
   font-family: DMSans-Medium;
-  /* src: url('/fonts/DMSans-Medium.ttf'); */
+  /* src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/fonts/DMSans-Medium.ttf'); */
   src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/DMSans-Medium.ttf');
 }
 @font-face {
   font-family: DMSans-Regular;
-  /* src: url('/fonts/DMSans-Regular.ttf'); */
+  /* src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/fonts/DMSans-Regular.ttf'); */
   src: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/DMSans-Regular.ttf');
 }
 
@@ -151,15 +151,15 @@ body {
   }
 }
 .holder_bg {
-  background-image: url('/addressan/bg1.png');
+  background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/addressan/bg1.png');
   background-size: 100% 100%;
 }
 .coll_bg {
-  background-image: url('/addressan/bg2.png');
+  background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/addressan/bg2.png');
   background-size: 100% 100%;
 }
 .top__bg{
-  background-image: url('/addressan/top_bg.png');
+  background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/addressan/top_bg.png');
   background-repeat: no-repeat;
   background-size: 100% ;
 }
@@ -242,7 +242,7 @@ body {
   padding: 0;
 }
 .img-wrap .img-bg {
-  background-image: url('/ranking/avatar_bg.png');
+  background-image: url('https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking/ranking/avatar_bg.png');
   background-position: left top;
   background-size: 100% 100%;
   background-repeat: no-repeat;

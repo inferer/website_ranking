@@ -3,6 +3,7 @@ const path = require("path");
 const COS = require("cos-nodejs-sdk-v5");
 //上面封装的遍历目录方法
 const fileDisplay = require("./fileDisplay");
+const replaceCssUrl = require("./replaceCssUrl");
 const config = require('../cos.config.json');
 const uploadKeys = require('./uploadKeys.json');
 //2.1拿到的密钥
@@ -96,11 +97,12 @@ const playUpload = async () => {
   // await deleteOldFile();
   // 获取即将上传的所有文件路径
   const fileData = await fileDisplay(filePath);
-  console.log(fileData)
-  // // 开始逐一上传
+  // 开始逐一上传
   await Promise.resolve(fileData.forEach(async (item) => {
     await uploadFile(item);
   })) 
+
+  replaceCssUrl();
 };
 
 playUpload();
