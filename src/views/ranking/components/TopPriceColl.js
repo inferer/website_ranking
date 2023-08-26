@@ -36,7 +36,7 @@ const TopPriceColl = () => {
 
   return (
     <RankWrap>
-      <img src='/ranking/circle4.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
+      <LazyImage src='/ranking/circle4.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
       {
         router.pathname === '/' ?
           <RankTitle>
@@ -102,7 +102,7 @@ const TopPriceColl = () => {
                         </div>  
                       </TableCell>
                       <TableCell className="w-[151px] justify-end">
-                        {/* <img src='/ranking/eth.png' className='w-5 h-5 mr-1' /> */}
+                        {/* <LazyImage src='/ranking/eth.png' className='w-5 h-5 mr-1' /> */}
                         <div className=' text-[20px]'>${formatNumber(Number(item.price))}</div>
                       </TableCell>
                     </TableRow>

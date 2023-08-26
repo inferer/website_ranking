@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { ConnectorNames } from "@/utils/web3React";
 import Modal from "../Modal";
 import useActiveWeb3React from "@/hooks/useActiveWeb3React";
+import LazyImage from "../LazyImage";
 
 export type WalletModalProps = {
   onDismiss?: () => void
@@ -44,7 +45,7 @@ const WalletModal: React.FC<any> = ({ onDismiss }) => {
               }}
             >
             <div className="flex items-center justify-center text-lg ">
-              <img src="/images/metamask.png" alt="" className="w-[40px] h-[40px]"/>
+              <LazyImage src="/images/metamask.png" alt="" className="w-[40px] h-[40px]"/>
             </div>
             <div className="text-[20px] font-medium text-white ml-4">Metamask</div>
           </div>
@@ -57,7 +58,7 @@ const WalletModal: React.FC<any> = ({ onDismiss }) => {
               }}
             >
             <div className="flex items-center justify-center text-lg ">
-              <img src="/images/walletconnect.png" alt="" className="w-[40px] h-[40px]"/>
+              <LazyImage src="/images/walletconnect.png" alt="" className="w-[40px] h-[40px]"/>
             </div>
             <div className="text-[20px] font-medium text-white ml-4">Wallet Connect</div>
           </div>

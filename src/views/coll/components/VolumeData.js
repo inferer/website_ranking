@@ -14,7 +14,7 @@ export const TTitle = ({
       >
         <div className='' style={{ lineHeight: '18px' }}>{text}</div>
         {
-          tips && <img src='/addressan/info.png' className="w-6 h-6 ml-3 cursor-pointer" alt=""
+          tips && <LazyImage src='/addressan/info.png' className="w-6 h-6 ml-3 cursor-pointer" alt=""
             onMouseEnter={() => setActive(true)}
             onMouseLeave={() => setActive(false)}
           />

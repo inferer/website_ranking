@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from 'react';
-import { Tooltip } from 'antd';
+import LazyImage from "../LazyImage";
 
 const MenuItem = ({ children, text, onClick }) => {
   const router = useRouter()
@@ -59,7 +59,7 @@ const MenuWhite = () => {
             <div className="flex items-center cursor-pointer"
               
             >
-              <img src='/logo.png' className='w-8 h-8' 
+              <LazyImage src='/logo.png' className='w-8 h-8' 
                 onClick={e => {
                   window.open('https://www.inferer.xyz/', '_blank')
                 }}

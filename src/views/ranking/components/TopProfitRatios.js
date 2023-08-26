@@ -28,7 +28,7 @@ const TopProfitRatios = () => {
 
   return (
     <RankWrap>
-      <img src='/ranking/circle7.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
+      <LazyImage src='/ranking/circle7.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
       {
         router.pathname === '/' ?
           <RankTitle>

@@ -24,7 +24,7 @@ const History = ({
 
   return (
     <RankWrap className='mt-[120px] sm:min-h-[100px]'>
-      <img src='/ranking/circle4.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
+      <LazyImage src='/ranking/circle4.png' className='w-8 h-8 absolute left-[26px] -top-[16px]' />
       <TTitle text="History" />
       <div className='mt-5'></div>
       <Table>
@@ -54,7 +54,7 @@ const History = ({
                         </div>
                       </TableCell>
                       <TableCell className="w-[254px] justify-end">
-                        <img src='/ranking/eth.png' className='w-5 h-5 mr-1' />
+                        <LazyImage src='/ranking/eth.png' className='w-5 h-5 mr-1' />
                         <div className='num-text3 text-[20px]'>{item.price}</div>
                       </TableCell>
                     </TableRow>

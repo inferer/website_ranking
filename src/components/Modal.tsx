@@ -1,4 +1,5 @@
 import React from "react";
+import LazyImage from "./LazyImage";
 
 export type ModalProps = {
   type?: string,
@@ -28,7 +29,7 @@ const ModalWrap: React.FC<ModalProps> = ({
             onDismiss && onDismiss(e)
           }}
         >
-          <img src="/images/close.png" className="w-[4.266vw] sm:w-[32px] sm:h-[32px]" alt="" />
+          <LazyImage src="/images/close.png" className="w-[4.266vw] sm:w-[32px] sm:h-[32px]" alt="" />
         </div>
       </div>
       <div className="min-h-[214px]">

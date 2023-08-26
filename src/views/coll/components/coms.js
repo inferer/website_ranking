@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import LazyImage from "../../../components/LazyImage";
 
 const LikePng = '/addressan/images/dup.png';
 const Like1Png = '/addressan/images/dup1.png';
@@ -39,7 +40,7 @@ export const Like = ({
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
         className={`flex items-center cursor-pointer like-wrap ${isLike || hover ? 'is-like' : ''} ${isUnlike ? ' opacity-70' : ''}`}>
-        <img src={isLike || hover ? Like1Png : LikePng} alt="" className='w-[28px] h-[28px] mr-[4px]' />
+        <LazyImage src={isLike || hover ? Like1Png : LikePng} alt="" className='w-[28px] h-[28px] mr-[4px]' />
         <div className={`num-text1 text-[22px] ${isLike || hover ? 'up' : ''}`}>{likeCount}</div>
       </div>
     )
@@ -68,7 +69,7 @@ export const UnLike = ({
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
         className={`flex items-center cursor-pointer like-wrap ${isUnlike || hover ? 'is-like' : ''} ${isLike ? ' opacity-70' : ''}`}>
-        <img src={isUnlike || hover ? Down2Png : DownPng} alt="" className='w-[28px] h-[28px] mr-[4px]' />
+        <LazyImage src={isUnlike || hover ? Down2Png : DownPng} alt="" className='w-[28px] h-[28px] mr-[4px]' />
         <div className={`num-text1 text-[22px] text ${isUnlike || hover ? 'down' : ''}`}>{unlikeCount}</div>
       </div>
     )
@@ -82,7 +83,7 @@ export const StarList = ({
       <div className='flex items-center star-list'>
         {
           new Array(5).fill('').map((item, index) => {
-            return <img key={index} className='w-[28px] h-[28px] ml-[4px]' src={index < score ? Star1Png : Star2Png} alt="" />
+            return <LazyImage key={index} className='w-[28px] h-[28px] ml-[4px]' src={index < score ? Star1Png : Star2Png} alt="" />
           })
         }
       </div>
@@ -106,7 +107,7 @@ export const CollectIcon = ({
         onMouseEnter={() => setActive(value || true)}
         onMouseLeave={() => setActive(value || false)}
       >
-        <img className='w-[42px] h-[42px]' src={active ? Collect2Png : CollectPng} alt="" />
+        <LazyImage className='w-[42px] h-[42px]' src={active ? Collect2Png : CollectPng} alt="" />
       </div>
     )
   }
@@ -124,7 +125,7 @@ export const ShareIcon = ({
         onMouseEnter={() => setActive(true)}
         onMouseLeave={() => setActive(false)}
       >
-        <img className='w-[42px] h-[42px]' src={active ? Share2Png : SharePng} alt="" />
+        <LazyImage className='w-[42px] h-[42px]' src={active ? Share2Png : SharePng} alt="" />
       </div>
     )
   }
@@ -142,7 +143,7 @@ export const BuyIcon = ({
         onMouseEnter={() => setActive(true)}
         onMouseLeave={() => setActive(false)}
       >
-        <img className='w-[42px] h-[42px]' src={active ? Buy2Png : BuyPng} alt="" />
+        <LazyImage className='w-[42px] h-[42px]' src={active ? Buy2Png : BuyPng} alt="" />
       </div>
     )
   }
@@ -160,7 +161,7 @@ export const MsgIcon = ({
         onMouseEnter={() => setActive(true)}
         onMouseLeave={() => setActive(false)}
       >
-        <img className='w-[42px] h-[42px]' src={active ? Msg2Png : MsgPng} alt="" />
+        <LazyImage className='w-[42px] h-[42px]' src={active ? Msg2Png : MsgPng} alt="" />
       </div>
     )
   }
@@ -174,7 +175,7 @@ export const TTitle = ({
       >
         <div className='' style={{ lineHeight: '18px' }}>{text}</div>
         {
-          tips && <img src={InfoPng} className="ml-1 w-3 h-3 cursor-pointer" alt=""
+          tips && <LazyImage src={InfoPng} className="ml-1 w-3 h-3 cursor-pointer" alt=""
             onMouseEnter={() => setActive(true)}
             onMouseLeave={() => setActive(false)}
           />

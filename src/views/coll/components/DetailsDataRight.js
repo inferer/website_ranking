@@ -9,6 +9,7 @@ import { message } from 'antd';
 import { redditShareUrl, redditBuyUrl, redditChatUrl } from '@/config'
 
 import { useUserStore } from "@/state";
+import LazyImage from "../../../components/LazyImage";
 
 
 export const randomStar = () => {
@@ -184,7 +185,7 @@ const DetailsDataRight = ({
                   <div className="text-[20px] text-[rgba(63,70,100,1)] font-fbold">${Number(item.max_price || 0).toFixed(2)}</div>
                   <div className="text-[16px] text-[rgba(63,70,100,0.6)] font-fmedium">ceiling price</div>
                 </div>
-                <img src="/addressan/h-line.png" className="w-[2px] h-[39px]" />
+                <LazyImage src="/addressan/h-line.png" className="w-[2px] h-[39px]" />
                 <div className="text-right">
                   <div className="text-[20px] text-[rgba(63,70,100,1)] font-fbold">${Number(item.min_price || 0).toFixed(2)}</div>
                   <div className="text-[16px] text-[rgba(63,70,100,0.6)] font-fmedium">floor price</div>

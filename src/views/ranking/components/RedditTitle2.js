@@ -39,14 +39,14 @@ const RedditTitle2 = () => {
           router.query.ranking === 'price-popullar' ? 
             <div className="w-full flex space-x-6">
               <div className="w-full flex justify-center">
-                <img src={title} className="w-[447px] h-auto " />
+                <LazyImage src={title} className="w-[447px] h-auto " />
               </div>
               <div className="w-full flex justify-center">
-                <img src="/ranking/top_popullar2.png" className="w-[520px] relative z-50 left-2 " />
+                <LazyImage src="/ranking/top_popullar2.png" className="w-[520px] relative z-50 left-2 " />
               </div>
               
             </div> : 
-            <img src={title} className="w-[807px] h-[54px]" />
+            <LazyImage src={title} className="w-[807px] h-[54px]" />
         }
         <LazyImage src="/ranking/circle2.png" className="w-[170px] h-[170px] absolute top-[0px] right-[0px]" />
         <LazyImage src="/ranking/circle3.png" className="w-[50px] h-[50px] absolute top-[140px] -left-[170px]" />
