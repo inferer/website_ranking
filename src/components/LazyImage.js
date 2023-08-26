@@ -6,7 +6,8 @@ const LazyImage = ({ src, className, ...others}) => {
   const { ref: inViewRef, inView, entry } = useInView({});
   useEffect(() => {
     if (inView && !imgSrc) {
-      setImgSrc(src)
+      // setImgSrc(src)
+      setImgSrc(isDev ? src : `https://website-1315068501.cos.ap-nanjing.myqcloud.com/website_ranking${src}`)
     }
     
   }, [inView])
